@@ -1,13 +1,7 @@
 import React, {useState} from 'react';
 
-interface PropsItem {
-    item:{
-        name:string,
-        price: number
-    }
-}
 
-function Item(props: PropsItem) {
+function Auth() {
 
 
 
@@ -23,13 +17,18 @@ function Item(props: PropsItem) {
   }
 
   return (
-    <div className="Item">  
-        <p>Item!</p>
-        <p>{props.item.name}</p>
-
+    <div className="Auth">  
+        <form>
+        <label>
+            username:
+            <input type="text" name="name" />
+        </label>
+        <input type="submit" value="Submit" />
+        </form>
 
     </div>
+
   );
 }
 
-export default Item;
+export default Auth;

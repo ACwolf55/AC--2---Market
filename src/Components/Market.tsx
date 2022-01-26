@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Item from './Item';
 
 
 function Market() {
@@ -17,7 +18,24 @@ function Market() {
     {
         name:"Apple",
         price:.40
-    }
+    },
+    {
+        name: "Mango",
+        price: 1.00,
+    },
+    {
+        name:"Apple",
+        price:.40
+    },{
+        name: "Mango",
+        price: 1.00,
+    },
+    {
+        name:"Apple",
+        price:.40
+    },
+   
+
   ]);
 
   const increment =()=>{
@@ -26,9 +44,16 @@ function Market() {
   }
 
   return (
-    <div className="Home">  
-        <p>Market!</p>
+    <div className="Market">  
+        <h3>Marketplace</h3>
 
+        <div className='item-map'>
+        {items.map(element=>{
+            return(
+            <Item item={element}/>
+            )
+        })}
+        </div>
 
     </div>
   );

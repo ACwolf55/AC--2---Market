@@ -4,6 +4,7 @@ import './App.css';
 import Home from './Components/Home';
 import Header from './Components/Header'
 import Market from './Components/Market';
+import Auth from './Components/Auth'
 
 function App() {
 
@@ -12,8 +13,11 @@ function App() {
   return (
     <div className="App">
       <Header/>
+      <main>
       <Market/>
-      {/* <Home/> */}
+      <Auth/>
+      </main>
+   
     </div>
   );
 }
