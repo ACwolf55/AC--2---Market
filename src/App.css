@@ -5,7 +5,7 @@ body{
 .App {
   display: Flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   text-align: center;
   height: 100vh;
@@ -16,6 +16,7 @@ header{
   border: 1px solid blue;
   width: 80vw;
   height: 10vh;
+  margin-top: 20px ;
 }
 
 main{
@@ -23,7 +24,6 @@ main{
   flex-direction: row;
   justify-content: space-around;
   width: 100vw;
-  margin-left: 200px;
 }
 
 .Auth{
@@ -37,6 +37,7 @@ main{
   background-color: aliceblue;
   width: 60vw;
   height: 80vh;
+  margin-left: 150px;
 }
 
 .item-map{

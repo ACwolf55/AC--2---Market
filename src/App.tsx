@@ -9,13 +9,13 @@ import Auth from './Components/Auth'
 function App() {
 
   
-
+  
   return (
     <div className="App">
       <Header/>
       <main>
-      <Market/>
-      <Auth/>
+        <Market/>
+        <Auth/>
       </main>
    
     </div>
