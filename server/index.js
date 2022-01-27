@@ -17,4 +17,6 @@ app.get('/test',(req,res)=>{
 res.send(testCart)
 })
 
+app.post('./register')
+
 app.listen(PORT, console.log(`RUNNING @ PORT ${PORT}`))
