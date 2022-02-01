@@ -14,6 +14,10 @@ const sequelize = new Sequelize(DATABASE_URI, {
 })
 
 module.exports = {
+    
+    test2:(req,res)=>{
+        res.send('test2')
+    },
 
     register:(req,res)=>{
         console.log("register")
@@ -24,10 +28,6 @@ module.exports = {
         sequelize.query(`INSERT INTO users (username, password) VALUES ('${username}', '${hash}') returning username;`)
             .then(dbRes => res.status(200).send(dbRes[0][0]))
             .catch(err => console.log(err))
-    },
-
-    test2:(req,res)=>{
-     res.send('test2')
     }
 
 

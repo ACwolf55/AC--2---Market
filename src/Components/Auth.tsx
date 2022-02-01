@@ -20,8 +20,9 @@ function Auth() {
     <div className="Auth">  
         <form>
         <label>
-            username:
-            <input type="text" name="name" />
+            register:
+            <input type="text" name="username" placeholder='username' />
+            <input type="password" name="password" placeholder='password' />
         </label>
         <input type="submit" value="Submit" />
         </form>
