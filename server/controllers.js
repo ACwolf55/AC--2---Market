@@ -1,4 +1,4 @@
-require('dotenv').config()
+
 const {DATABASE_URI} = process.env
 const Sequelize = require('sequelize')
 const bcrypt = require("bcryptjs");
@@ -13,16 +13,23 @@ const sequelize = new Sequelize(DATABASE_URI, {
     }
 })
 
-module.exports= {
+module.exports = {
 
-    register:(req,res=>{
-       
+    register:(req,res)=>{
+        console.log("register")
         let{username,password} = req.body
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(password, salt)
+    
+        sequelize.query(`INSERT INTO users (username, password) VALUES ('${username}', '${hash}') returning username;`)
+            .then(dbRes => res.status(200).send(dbRes[0][0]))
+            .catch(err => console.log(err))
+    },
 
-        sequelize.query(`INSERT INTO users (username, password) VALUES (
-            ${username},${hash});`)
-    })
+    test2:(req,res)=>{
+     res.send('test2')
+    }
+
+
 
 }
