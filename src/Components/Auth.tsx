@@ -27,6 +27,9 @@ function Auth() {
         <input type="submit" value="Submit" />
         </form>
 
+        <p style={{color:'black'}}>{number}</p>
+        <button onClick={increment}>Add</button>
+
     </div>
 
   );
