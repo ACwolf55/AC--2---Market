@@ -29,6 +29,7 @@ app.get('/test2',ctrl.test2)
 
 
 app.post('/register',ctrl.register)
+app.post('/login',ctrl.login)
 
 
 
