@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
+import axios from 'axios';
 import Item from './Item';
 
 
@@ -10,7 +11,7 @@ function Market() {
   const[loading, setLoading] = useState<boolean>(true)
 
 
-  const [items, setItem] = useState([
+  const [items, setItems] = useState([
     {
         name: "Mango",
         price: 1.00,
@@ -37,6 +38,13 @@ function Market() {
    
 
   ]);
+
+  useEffect(()=>{
+    axios.get('/shop',).then((res)=>{
+      console.log(res.data)
+      setItems(res.data)
+    })
+  },[])
 
   const increment =()=>{
     setNumber(prevState=> prevState+1)
