@@ -1,49 +1,66 @@
-import axios from 'axios';
-import React, {useState} from 'react';
-
+import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Auth() {
+  const navigate = useNavigate();
+  let loginName = sessionStorage.getItem("username");
+  let id = sessionStorage.getItem("id");
 
-
-
-  const[number, setNumber] = useState(1)
-  const[username, setUsername] = useState<string>('')
-  const[password, setPassword] = useState<string>('')
+  const [number, setNumber] = useState(1);
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   // const[number, setNumber] = useState<number>(1)
   // const[number, setNumber] = useState<number | string>(1)
-  const[loading, setLoading] = useState<boolean>(true)
+  const [loading, setLoading] = useState<boolean>(true);
 
-
-  const increment =()=>{
-    setNumber(prevState=> prevState+1)
+  const increment = () => {
+    setNumber((prevState) => prevState + 1);
+    sessionStorage.setItem("test",'true');
     // setNumber("5") typescript error
-  }
+    console.log(loginName )
+  };
 
-  const login=()=>{
-    if(username===''){
-      alert('enter username')
-    }else if(password===''){alert('must enter password')}
-    else{
-    axios.post('/login',{username,password})
+  const login = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    console.log(username, password)
+    
+    if (username === "") {
+      alert("enter username");
+    } else if (password === "") {
+      alert("must enter password");
+    } else {
+      axios.post("/login", { username, password }).then((res) => {
+        sessionStorage.setItem("username", res.data.username);
+        sessionStorage.setItem("id", res.data.id);
+        navigate('/')
+      }).catch((err)=> console.log(err))
     }
-  }
+  };
 
   return (
-    <div className="Auth">  
-        <form onSubmit={login}>
+    <div className="Auth">
+      {loginName !== null ? <div>{loginName}</div> : <form onSubmit={login}>
         <label>
-            register:
-            <input type="text" name="username" placeholder='username' onChange={setUsername} />
-            <input type="password" name="password" placeholder='password' />
+          Login:
+          <input
+            type="text"
+            name="username"
+            placeholder="username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </label>
         <input type="submit" value="Submit" />
-        </form>
-
-        <p style={{color:'black'}}>{number}</p>
+      </form> }
+      <p style={{color:'black'}}>{number}</p>
         <button onClick={increment}>Add</button>
-
     </div>
-
   );
 }
 

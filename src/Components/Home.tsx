@@ -1,4 +1,7 @@
 import React, {useState} from 'react';
+import Header from './Header'
+import Market from './Market';
+import Auth from './Auth'
 
 
 function Home() {
@@ -27,7 +30,12 @@ function Home() {
 
   return (
     <div className="Home">  
-        <p>HOME!</p>
+    <Header/>
+          <main>
+        <Market/>
+      <Auth/>
+    </main>
+   
 
 
     </div>
