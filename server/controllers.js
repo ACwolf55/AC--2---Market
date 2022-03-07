@@ -49,4 +49,20 @@ module.exports = {
       res.send(dbRes[0]);
     });
   },
+    addToCart: (req,res)=>{
+      const {user_id,item_id,quanity} = req.body
+      sequelize.query(`INSERT INTO cart (user_id, item_id, quanity) VALUES(${user_id},${item_id},${quanity}); SELECT * FROM cart WHERE user_id = ${user_id}`).then((dbRes)=>{
+        return res.status(200).send(dbRes[0])
+      })
+
+      
+    },
+    displayCart: (req,res)=>{
+      const user_id = parseInt(req.params.user_id)
+      console.log('test')
+
+      sequelize.query(`SELECT * FROM cart WHERE user_id = ${user_id}`).then((dbRes)=>{
+        return res.status(200).send(dbRes[0])
+      })
+    }
 };

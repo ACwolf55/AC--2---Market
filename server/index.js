@@ -32,6 +32,10 @@ app.post('/register',ctrl.register)
 app.post('/login',ctrl.login)
 app.get('/shop',ctrl.allItems)
 
+app.post('/addToCart',ctrl.addToCart)
+app.put('/changeQuanity')
+app.get('/displayCart/:user_id',ctrl.displayCart)
+
 
 
 app.listen(PORT, console.log(`RUNNING @ PORT ${PORT}`))
