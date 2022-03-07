@@ -13,29 +13,17 @@ function Market() {
 
   const [items, setItems] = useState([
     {
+        id:1,
         name: "Mango",
         price: 1.00,
+        description:'sweet tropical fruit'
     },
     {
+        id:2,
         name:"Apple",
-        price:.40
-    },
-    {
-        name: "Mango",
-        price: 1.00,
-    },
-    {
-        name:"Apple",
-        price:.40
-    },{
-        name: "Mango",
-        price: 1.00,
-    },
-    {
-        name:"Apple",
-        price:.40
-    },
-   
+        price:.40,
+        description:'red fruit'
+    }
 
   ]);
 
