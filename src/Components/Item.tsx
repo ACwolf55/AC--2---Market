@@ -10,7 +10,7 @@ interface PropsItem {
 
 function Item(props: PropsItem) {
 
-  let user_id = sessionStorage.getItem("username");
+  let user_id = sessionStorage.getItem("id");
 
   const[number, setNumber] = useState(1)
   // const[number, setNumber] = useState<number>(1)
@@ -24,14 +24,17 @@ function Item(props: PropsItem) {
   }
   
   const addToCart=()=>{
-  
+   
+    axios.post('/addToCart',{user_id:user_id,name:props.item.name,quanity:number })
+    
   } 
 
   return (
     <div className="Item">  
         <p>Item!</p>
         <p>{props.item.name}</p>
-
+        <button onClick={increment}>+</button>
+        <p>{number}</p>
         <button onClick={addToCart}>add</button>
 
 

@@ -34,9 +34,15 @@ function Auth() {
         sessionStorage.setItem("username", res.data.username);
         sessionStorage.setItem("id", res.data.id);
         navigate('/')
+        setNumber((prevState) => prevState + 1);
       }).catch((err)=> console.log(err))
     }
   };
+
+  const logout =()=>{
+    sessionStorage.clear()
+    setNumber(0)
+  }
 
   return (
     <div className="Auth">
@@ -60,6 +66,7 @@ function Auth() {
       </form> }
       <p style={{color:'black'}}>{number}</p>
         <button onClick={increment}>Add</button>
+        <button onClick={logout}>Logout</button>
     </div>
   );
 }
