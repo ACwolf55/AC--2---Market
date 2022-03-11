@@ -31,8 +31,7 @@ function Market() {
     axios.get('/shop',).then((res)=>{
       console.log(res.data)
       setItems(res.data)
-    })
-  },[])
+    })},[])
 
   const increment =()=>{
     setNumber(prevState=> prevState+1)

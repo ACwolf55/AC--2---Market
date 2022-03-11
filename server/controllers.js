@@ -69,5 +69,12 @@ module.exports = {
       sequelize.query(`SELECT * FROM cart WHERE user_id = ${user_id}`).then((dbRes)=>{
         return res.status(200).send(dbRes[0])
       })
+    },
+    cartNumber: (req,res)=>{
+      const id =  parseInt(req.params.id)
+      sequelize.query(`SELECT COUNT(item_id)FROM cart WHERE user_id = ${id};`).then((dbRes)=>{
+        const cartNum = parseInt(dbRes[0][0].count)
+        return res.status(200).send(dbRes[0][0].count)
+      })
     }
 };

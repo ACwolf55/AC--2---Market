@@ -35,7 +35,7 @@ app.get('/shop',ctrl.allItems)
 app.post('/addToCart',ctrl.addToCart)
 app.put('/changeQuanity')
 app.get('/displayCart/:user_id',ctrl.displayCart)
-
+app.get('/cartNumber/:id',ctrl.cartNumber)
 
 
 app.listen(PORT, console.log(`RUNNING @ PORT ${PORT}`))

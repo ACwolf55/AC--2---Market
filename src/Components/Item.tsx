@@ -39,6 +39,7 @@ function Item(props: PropsItem) {
       console.log(res.data)
       console.log(itemAdded)
       setItemAdded(true)
+      setNumber(0)
       setTimeout(() => {setItemAdded(false)}, 1500);
     }).catch((err)=>console.log(err));
   }
