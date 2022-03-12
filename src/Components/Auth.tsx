@@ -10,31 +10,30 @@ function Auth() {
   // let loginName = sessionStorage.getItem("username");
   // let id = sessionStorage.getItem("id");
 
-  const [number, setNumber] = useState(1);
-  const [cartNumber, setCartNumber] = useState(0);
+  const [loaded, setLoaded] = useState(false);
+  const [cartNumber, setCartNumber] = useState(null);
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  // const[number, setNumber] = useState<number>(1)
+  const[number, setNumber] = useState<number>(1)
   // const[number, setNumber] = useState<number | string>(1)
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    console.log(cartNumber)
     let loginName = sessionStorage.getItem("username");
     let id = sessionStorage.getItem("id");
-    if(loginName!==null){
-      axios.get(`/cartNumber/${id}`).then((res)=>{
+    axios.get(`/cartNumber/${id}`).then((res)=>{
         setCartNumber(res.data)
-      })
+    })
+    while(cartNumber==0){
+      console.log(number  )
+      setNumber((prevState)=>prevState+1)
     }
+    if(loginName==null){
+      setLoaded(false)
+    }
+  }, [loaded])
 
-  }, [])
-  
-
-  const increment = () => {
-    setNumber((prevState) => prevState + 1);
-    sessionStorage.setItem("test",'true');
-    // setNumber("5") typescript error
-  };
 
   const login = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -48,22 +47,27 @@ function Auth() {
       axios.post("/login", { username, password }).then((res) => {
         sessionStorage.setItem("username", res.data.username);
         sessionStorage.setItem("id", res.data.id);
-        navigate('/')
-        setNumber((prevState) => prevState + 1);
+        setLoaded(true);
+        console.log('axios thn test')
+
       }).catch((err)=> console.log(err))
     }
   };
 
   const logout =()=>{
     sessionStorage.clear()
-    setNumber(0)
+    setLoaded(false)
+    navigate('/')
+  }
+  const viewCart =()=>{
+    
   }
 
   return (
     <div className="Auth">
       {loginName !== null ?
-      <div id='cart'>
-        <div className="cartNumLogo">{cartNumber}</div>
+      <div id='cart' onClick={viewCart}>
+        <div className="cartNumLogo">{cartNumber==null?"loading" : cartNumber}</div>
         <img src='./cart.png'/>
         <div/>
        <div>{loginName}</div> 
@@ -87,8 +91,7 @@ function Auth() {
         </label>
         <input type="submit" value="Submit" />
       </form> }
-      <p style={{color:'black'}}>{number}</p>
-        <button onClick={increment}>Add</button>
+      <p style={{color:'black'}}>{loaded}</p>
         <button onClick={logout}>Logout</button>
     </div>
   );

@@ -34,7 +34,8 @@ app.get('/shop',ctrl.allItems)
 
 app.post('/addToCart',ctrl.addToCart)
 app.put('/changeQuanity')
-app.get('/displayCart/:user_id',ctrl.displayCart)
+app.get('/getCart/:user_id',ctrl.getCart)
+app.get('/getItem/:item_id',ctrl.getItem)
 app.get('/cartNumber/:id',ctrl.cartNumber)
 
 
