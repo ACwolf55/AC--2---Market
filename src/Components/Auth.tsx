@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import cartLogo from './cart.png'
 
 
 function Auth() {
@@ -60,15 +61,15 @@ function Auth() {
     navigate('/')
   }
   const viewCart =()=>{
-    
+    navigate('/Cart')
   }
 
   return (
     <div className="Auth">
       {loginName !== null ?
-      <div id='cart' onClick={viewCart}>
+      <div id='cart'onClick={viewCart} style={{cursor: 'pointer'}} >
         <div className="cartNumLogo">{cartNumber==null?"loading" : cartNumber}</div>
-        <img src='./cart.png'/>
+        <img src={cartLogo} id='cart-logo'/>
         <div/>
        <div>{loginName}</div> 
        </div>

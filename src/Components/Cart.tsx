@@ -4,12 +4,19 @@ import CartItem from './CartItem';
 
 
 function Cart() {
-let id = sessionStorage.getItem("id");
+  let id = sessionStorage.getItem("id");
   const[number, setNumber] = useState(1)
   // const[number, setNumber] = useState<number>(1)
   // const[number, setNumber] = useState<number | string>(1)
-  const[loading, setLoading] = useState<boolean>(true)
-  const[cart,setCart] = useState([])
+  const[loading, setLoading] = useState(true)
+  const[cart,setCart] = useState(
+    [
+      {id:0,
+    user_id: 0,
+    item_id: 0,
+    quanity:0}
+    ]
+    )
   
 
   useEffect(()=>{
@@ -20,23 +27,24 @@ let id = sessionStorage.getItem("id");
 
   const increment =()=>{
     setNumber(prevState=> prevState+1)
-    // setNumber("5") typescript error
+   
   }
 
   return (
     <div className="Market">  
         <h3>Marketplace</h3>
 
-        {/* <div className='item-map'>
-        {cart.map(item=>{
-            return(
-            <CartItem item_id={item}/>
-            )
-        })}
-        </div> */}
+        <div className='item-map'> 
+              {cart.map(element=>{
+                return(
+                <CartItem item={element}/>
+                )
+            })}
+            
+        </div>
 
     </div>
-  );
-}
+  )
+          }
 
 export default Cart;

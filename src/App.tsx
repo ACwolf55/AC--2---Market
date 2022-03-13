@@ -5,6 +5,7 @@ import Home from './Components/Home';
 import Header from './Components/Header'
 import Market from './Components/Market';
 import Auth from './Components/Auth'
+import Cart from './Components/Cart'
 import {Route, Routes} from 'react-router-dom'
  
 function App() {
@@ -18,6 +19,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={ <Home/> } />
+        <Route path='/Cart' element={<Cart/>}/>
       </Routes>
  
     </div>

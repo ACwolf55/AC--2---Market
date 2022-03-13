@@ -2,10 +2,11 @@ import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 
 interface PropsItem {
-    id:Number,
+    item:{id:Number,
     user_id: Number,
     item_id: Number,
     quanity:Number
+    }
 }
 
 function CartItem(props: PropsItem) {
@@ -21,7 +22,9 @@ function CartItem(props: PropsItem) {
   })
 
   useEffect(() => {
-    axios.get(`/getItem${props.item_id}`).then((res)=>{
+    console.log(props.item.item_id)
+    axios.get(`/getItem/${props.item.item_id}`).then((res)=>{
+      console.log(res.data)
         setItem(res.data)
     })
   
@@ -36,6 +39,7 @@ function CartItem(props: PropsItem) {
   const deincrement =()=>{
     if(number>0){
     setNumber(prevState=> prevState-1)
+    console.log(item)
     }
   }
   
@@ -45,7 +49,7 @@ function CartItem(props: PropsItem) {
       ?
       <p>loading</p>
       :
-        <div className='item'>
+        <div className='Item'>
         <p>Item!</p>
         <p>{item.name}</p>
         <button onClick={deincrement}>-</button>
