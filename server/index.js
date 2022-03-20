@@ -4,8 +4,6 @@ const app = express()
 // const Sequelize = require('sequelize')
 const ctrl = require('./controllers')
 
-const {DATABASE_URI} = process.env
-
 const PORT = 5000
 
 

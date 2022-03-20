@@ -1,9 +1,11 @@
 import React, {useState,useEffect} from 'react';
 import axios from 'axios';
 import CartItem from './CartItem';
+import { useNavigate } from "react-router-dom";
 
 
 function Cart() {
+  const navigate = useNavigate();
   let id = sessionStorage.getItem("id");
   const[number, setNumber] = useState(1)
   // const[number, setNumber] = useState<number>(1)
@@ -25,9 +27,9 @@ function Cart() {
       setCart(res.data)
     })},[])
 
-  const increment =()=>{
-    setNumber(prevState=> prevState+1)
-   
+  const checkOut =()=>{
+
+    navigate('/CheckOut')
   }
 
   return (
@@ -40,7 +42,7 @@ function Cart() {
                 <CartItem item={element}/>
                 )
             })}
-            
+            <button>Check Out</button>
         </div>
 
     </div>

@@ -49,7 +49,6 @@ function Auth() {
         sessionStorage.setItem("username", res.data.username);
         sessionStorage.setItem("id", res.data.id);
         setLoaded(true);
-        console.log('axios thn test')
 
       }).catch((err)=> console.log(err))
     }
