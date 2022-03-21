@@ -54,12 +54,12 @@ function Auth() {
     }
   };
 
-  const logout =()=>{
+  const logout=()=>{
     sessionStorage.clear()
     setLoaded(false)
     navigate('/')
   }
-  const viewCart =()=>{
+  const viewCart=()=>{
     navigate('/Cart')
   }
 
@@ -71,6 +71,7 @@ function Auth() {
         <img src={cartLogo} id='cart-logo'/>
         <div/>
        <div>{loginName}</div> 
+       <button onClick={logout}>Logout</button>
        </div>
        :
         <form onSubmit={login}>
@@ -92,7 +93,6 @@ function Auth() {
         <input type="submit" value="Submit" />
       </form> }
       <p style={{color:'black'}}>{loaded}</p>
-        <button onClick={logout}>Logout</button>
     </div>
   );
 }
