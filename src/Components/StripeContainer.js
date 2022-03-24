@@ -1,21 +1,20 @@
 import React, {useState} from 'react'
-import {CardElement, useElements, useStripe} from '@stripe/react-stripe-js'
+import {Elements} from '@stripe/react-stripe-js'
+import {loadStripe} from '@stripe/stripe.js'
+import PayementForm from './PayementForm'
+
+const PUBLIC_KEY ='pk_test_TYooMQauvdEDq54NiTphI7jx'
+
+const stripeTestPromise = loadStripe(PUBLIC_KEY)
 
 export default function StripeContainer() {
-  const [success, setSuccess] = useState(false)
-  const stripe = useStripe()
-  const elements = useElements()
 
-  const handleSubmit= async(e)=>{
-    e.preventDefault()
-    const [error, paymentMethod] = await stripe.createPaymentMethod({
-      type:'card',
-      card: elements.getElement(CardElement)
-
-    })
-  }
 
   return (
-    <div>StripeContainer</div>
+   <Elements stripe={stripeTestPromise}>
+     <PayementForm/>
+
+   </Elements>
+    
   )
 }

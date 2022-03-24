@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { DATABASE_URI } = process.env;
 const Sequelize = require("sequelize");
 const bcrypt = require("bcryptjs");
@@ -21,7 +22,10 @@ module.exports = {
     let { username, password } = req.body;
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
-
+    //Check username already exist in the database 
+    //return error 
+    //else continue register
+    //se
     sequelize
       .query(
         `INSERT INTO users (username, password) VALUES ('${username}', '${hash}') returning username;`
