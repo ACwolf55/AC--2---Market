@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import {Elements} from '@stripe/react-stripe-js'
-import {loadStripe} from '@stripe/stripe.js'
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
 import PayementForm from './PayementForm'
 
 const PUBLIC_KEY ='pk_test_TYooMQauvdEDq54NiTphI7jx'

@@ -2,6 +2,10 @@ require("dotenv").config();
 const { DATABASE_URI } = process.env;
 const Sequelize = require("sequelize");
 const bcrypt = require("bcryptjs");
+const cors = require('cors')
+const bodyParser = require('body-parser');
+const { appendFile } = require("fs");
+const stripe = require(stripe)(process.env.STRIPE_SECRET_TEST)
 
 // you wouldn't want to rejectUnauthorized in a production app, but it's great for practice
 const sequelize = new Sequelize(DATABASE_URI, {
@@ -12,6 +16,11 @@ const sequelize = new Sequelize(DATABASE_URI, {
     },
   },
 });
+
+//-----STripe code
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json())
+app.use(cors())
 
 module.exports = {
   test2: (req, res) => {
@@ -89,5 +98,29 @@ module.exports = {
         const cartNum = parseInt(dbRes[0][0].count)
         return res.status(200).send(dbRes[0][0].count)
       })
+    },
+
+    payment:(req,res)=>{
+      let {amount,id} = req.body
+      try {
+        const payment = await stripe.paymentIntents.create({
+          amount,
+          currency:'USD',
+          description: 'USER CART',
+          payment_method: id,
+          confirm: true
+        })
+        console.log('payment', payment)
+        res.json({
+          message: 'payment successful',
+          success:true
+        })
+      } catch (error) {
+        console.log('error',error)
+        res.json({
+          message:'payment failed',
+          success:false
+        })
+      }
     }
 };
