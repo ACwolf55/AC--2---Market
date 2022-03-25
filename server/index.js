@@ -2,11 +2,16 @@ const express = require('express')
 const app = express()
 // const Sequelize = require('sequelize')
 const ctrl = require('./controllers')
+const cors = require('cors')
+const bodyParser = require('body-parser');
 
 const PORT = 5000
 
 
 app.use(express.json())
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json())
+app.use(cors())
 
 
 const testCart = [
@@ -27,6 +32,8 @@ app.get('/test2',ctrl.test2)
 
 app.post('/register',ctrl.register)
 app.post('/login',ctrl.login)
+
+
 app.get('/shop',ctrl.allItems)
 
 app.post('/addToCart',ctrl.addToCart)
@@ -35,7 +42,7 @@ app.get('/getCart/:user_id',ctrl.getCart)
 app.get('/getItem/:item_id',ctrl.getItem)
 app.get('/cartNumber/:id',ctrl.cartNumber)
 
-app.post('/payment', ctrl.payment)
+app.post('/payment', cors(), ctrl.payment)
 
 
 app.listen(PORT, console.log(`RUNNING @ PORT ${PORT}`))

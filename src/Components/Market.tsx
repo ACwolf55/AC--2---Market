@@ -29,7 +29,6 @@ function Market() {
 
   useEffect(()=>{
     axios.get('/shop',).then((res)=>{
-      console.log(res.data)
       setItems(res.data)
     })},[])
 

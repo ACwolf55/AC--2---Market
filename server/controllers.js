@@ -2,10 +2,7 @@ require("dotenv").config();
 const { DATABASE_URI } = process.env;
 const Sequelize = require("sequelize");
 const bcrypt = require("bcryptjs");
-const cors = require('cors')
-const bodyParser = require('body-parser');
-const { appendFile } = require("fs");
-const stripe = require(stripe)(process.env.STRIPE_SECRET_TEST)
+const stripe = require('stripe')(process.env.STRIPE_SECRET_TEST)
 
 // you wouldn't want to rejectUnauthorized in a production app, but it's great for practice
 const sequelize = new Sequelize(DATABASE_URI, {
@@ -16,11 +13,6 @@ const sequelize = new Sequelize(DATABASE_URI, {
     },
   },
 });
-
-//-----STripe code
-app.use(bodyParser.urlencoded({extended:true}))
-app.use(bodyParser.json())
-app.use(cors())
 
 module.exports = {
   test2: (req, res) => {
@@ -34,7 +26,7 @@ module.exports = {
     //Check username already exist in the database 
     //return error 
     //else continue register
-    //se
+  
     sequelize
       .query(
         `INSERT INTO users (username, password) VALUES ('${username}', '${hash}') returning username;`
@@ -57,11 +49,16 @@ module.exports = {
       })
       .catch((err) => console.log("username not found"));
   },
+
+
+
+
   allItems: (req, res) => {
     sequelize.query(`SELECT * FROM items;`).then((dbRes) => {
       res.send(dbRes[0]);
-    });
+    })
   },
+
     addToCart: (req,res)=>{
       let {user_id,item_id,quanity} = req.body
       user_id = parseInt(user_id)
@@ -100,10 +97,10 @@ module.exports = {
       })
     },
 
-    payment:(req,res)=>{
+    payment: async (req,res) => {
       let {amount,id} = req.body
       try {
-        const payment = await stripe.paymentIntents.create({
+        const payment = stripe.paymentIntents.create({
           amount,
           currency:'USD',
           description: 'USER CART',

@@ -42,7 +42,7 @@ function Cart() {
                 <CartItem item={element}/>
                 )
             })}
-            <button>Check Out</button>
+            <button onClick={checkOut}>Check Out</button>
         </div>
 
     </div>
