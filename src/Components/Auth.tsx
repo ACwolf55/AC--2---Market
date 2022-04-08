@@ -27,7 +27,6 @@ function Auth() {
         setCartNumber(res.data)
     })
     while(cartNumber==0){
-      console.log(number  )
       setNumber((prevState)=>prevState+1)
     }
     if(loginName==null){
@@ -59,21 +58,22 @@ function Auth() {
     setLoaded(false)
     navigate('/')
   }
-  const viewCart=()=>{
-    navigate('/Cart')
-  }
+ 
+
 
   return (
     <div className="Auth">
       {loginName !== null ?
-      <div id='cart'onClick={viewCart} style={{cursor: 'pointer'}} >
+      <div id='cart'onClick={()=>navigate('/Cart')} style={{cursor: 'pointer'}} >
         <div className="cartNumLogo">{cartNumber==null?"loading" : cartNumber}</div>
         <img src={cartLogo} id='cart-logo'/>
+        <h4>view cart</h4>
         <div/>
        <div>{loginName}</div> 
        <button onClick={logout}>Logout</button>
        </div>
        :
+       <>
         <form onSubmit={login}>
         <label>
           Login:
@@ -91,7 +91,11 @@ function Auth() {
           />
         </label>
         <input type="submit" value="Submit" />
-      </form> }
+      </form>
+       <button onClick={()=>navigate('/Register')}>Register</button> 
+       </>
+       }
+     
       <p style={{color:'black'}}>{loaded}</p>
     </div>
   );

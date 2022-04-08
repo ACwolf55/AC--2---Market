@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import axios from 'axios';
 import Item from './Item';
+import { addAbortSignal } from 'stream';
 
 
 function Market() {
@@ -11,25 +12,12 @@ function Market() {
   const[loading, setLoading] = useState<boolean>(true)
 
 
-  const [items, setItems] = useState([
-    {
-        id:1,
-        name: "Mango",
-        price: 1.00,
-        description:'sweet tropical fruit'
-    },
-    {
-        id:2,
-        name:"Apple",
-        price:.40,
-        description:'red fruit'
-    }
-
-  ]);
+  const [items, setItems] = useState([]);
 
   useEffect(()=>{
-    axios.get('/shop',).then((res)=>{
+    axios.get('/shop').then((res)=>{
       setItems(res.data)
+      
     })},[])
 
   const increment =()=>{
@@ -40,7 +28,6 @@ function Market() {
   return (
     <div className="Market">  
         <h3>Marketplace</h3>
-
         <div className='item-map'>
         {items.map(element=>{
             return(

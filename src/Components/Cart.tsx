@@ -11,6 +11,7 @@ function Cart() {
   // const[number, setNumber] = useState<number>(1)
   // const[number, setNumber] = useState<number | string>(1)
   const[loading, setLoading] = useState(true)
+
   const[cart,setCart] = useState(
     [
       {id:0,

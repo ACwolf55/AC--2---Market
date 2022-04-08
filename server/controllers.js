@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config(); 
 const { DATABASE_URI } = process.env;
 const Sequelize = require("sequelize");
 const bcrypt = require("bcryptjs");
@@ -28,11 +28,19 @@ module.exports = {
     //else continue register
   
     sequelize
-      .query(
-        `INSERT INTO users (username, password) VALUES ('${username}', '${hash}') returning username;`
-      )
-      .then((dbRes) => res.status(200).send(dbRes[0][0]))
-      .catch((err) => console.log(err));
+      .query(`SELECT * FROM users WHERE username = '${username}';`)
+      .then((dbRes) => {
+       
+        sequelize
+          .query(
+            `INSERT INTO users (username, password) VALUES ('${username}', '${hash}') returning username;`
+          )
+          .then((dbRes) => res.status(200).send(dbRes[0][0]))
+          .catch((err) => console.log(err));
+     
+      })
+      .catch((err) => console.log("username not found"));
+
   },
 
   login: async (req, res) => {
