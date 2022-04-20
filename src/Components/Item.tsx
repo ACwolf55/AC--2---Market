@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, {useState} from 'react';
+import {useNavigate} from 'react-router-dom'
 
 interface PropsItem {
     item:{
@@ -11,7 +12,7 @@ interface PropsItem {
 }
 
 function Item(props: PropsItem) {
-
+  const navigate = useNavigate();
   let user_id = sessionStorage.getItem("id");
 
   const[number, setNumber] = useState(1)
@@ -39,8 +40,10 @@ function Item(props: PropsItem) {
       console.log(res.data)
       console.log(itemAdded)
       setItemAdded(true)
-      setNumber(0)
+      setNumber(1) 
+      navigate('/')
       setTimeout(() => {setItemAdded(false)}, 1500);
+     
     }).catch((err)=>console.log(err));
   }
   } 

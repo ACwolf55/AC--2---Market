@@ -41,6 +41,7 @@ app.put('/changeQuanity')
 app.get('/getCart/:user_id',ctrl.getCart)
 app.get('/getItem/:item_id',ctrl.getItem)
 app.get('/cartNumber/:id',ctrl.cartNumber)
+app.get('/getCartTotal/:id',ctrl.getCartTotal)
 
 app.post('/payment', cors(), ctrl.payment)
 

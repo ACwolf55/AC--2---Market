@@ -105,27 +105,12 @@ module.exports = {
       })
     },
 
-    payment: async (req,res) => {
-      let {amount,id} = req.body
-      try {
-        const payment = stripe.paymentIntents.create({
-          amount,
-          currency:'USD',
-          description: 'USER CART',
-          payment_method: id,
-          confirm: true
-        })
-        console.log('payment', payment)
-        res.json({
-          message: 'payment successful',
-          success:true
-        })
-      } catch (error) {
-        console.log('error',error)
-        res.json({
-          message:'payment failed',
-          success:false
-        })
-      }
+    getCartTotal: async (req,res) => {
+      const id =  parseInt(req.params.id)
+      sequelize.query(`SELECT //////code here = ${id};`).then((dbRes)=>{
+     
+        return res.status(200).send(dbRes)
+      })
+
     }
 };

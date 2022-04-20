@@ -14,8 +14,12 @@ CREATE TABLE Users (
 CREATE TABLE Cart (
     id INTEGER PRIMARY KEY,
     user_id INT REFERENCES users(id),
-    item_id INT REFERENCES items(id)
+    item_id INT REFERENCES items(id),
+    
+
 );
+
+
 
 INSERT INTO users (username, password)
 VALUES ('asdf','pass');

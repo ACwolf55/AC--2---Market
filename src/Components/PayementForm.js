@@ -56,8 +56,8 @@ export default function PayementForm() {
   return (
 
   <>
-  {!success 
-  ?
+  <>STRIPE FORM</>
+ 
     <form onSubmit={handleSubmit}>
       <fieldset className="FormGroup">
         <div className="FormRow">
@@ -66,11 +66,7 @@ export default function PayementForm() {
       </fieldset>
       <button>Pay</button>
     </form>
-  :
-  <>
-  <h2>Purchase complete!</h2>
-  </>
-}
+
   
   </>
   

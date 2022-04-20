@@ -26,6 +26,10 @@ function Cart() {
     axios.get(`/getCart/${id}`).then((res)=>{
       console.log(res.data)
       setCart(res.data)
+
+
+
+
     })},[])
 
   const checkOut =()=>{

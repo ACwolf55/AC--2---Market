@@ -48,7 +48,6 @@ function Auth() {
         sessionStorage.setItem("username", res.data.username);
         sessionStorage.setItem("id", res.data.id);
         setLoaded(true);
-
       }).catch((err)=> console.log(err))
     }
   };
