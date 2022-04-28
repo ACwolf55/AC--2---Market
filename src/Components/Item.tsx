@@ -55,8 +55,8 @@ function Item(props: PropsItem) {
     <div className='item-normal'>
         <p>Item!</p>
         <p>{props.item.name}</p>
-        <button onClick={deincrement}>-</button>
-        <button onClick={increment}>+</button>
+        {/* <button onClick={deincrement}>-</button>
+        <button onClick={increment}>+</button> */}
         <p>{number}</p>
         <button onClick={addToCart}>add</button>
     </div>

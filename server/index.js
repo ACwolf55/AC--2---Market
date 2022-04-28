@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
 // const Sequelize = require('sequelize')
-const ctrl = require('./controllers')
+const userCtrl = require('./userController')
+const cartCtrl = require('./cartController')
 const cors = require('cors')
 const bodyParser = require('body-parser');
 
@@ -23,27 +24,26 @@ const testCart = [
 ]
 
 
-
 app.get('/test',(req,res)=>{
     res.send(testCart)
     })
-app.get('/test2',ctrl.test2)
+
+app.get('/test2',userCtrl.test2)
 
 
-app.post('/register',ctrl.register)
-app.post('/login',ctrl.login)
+app.post('/register',userCtrl.register)
+app.post('/login',userCtrl.login)
 
 
-app.get('/shop',ctrl.allItems)
+app.get('/shop', cartCtrl.allItems)
 
-app.post('/addToCart',ctrl.addToCart)
-app.put('/changeQuanity')
-app.get('/getCart/:user_id',ctrl.getCart)
-app.get('/getItem/:item_id',ctrl.getItem)
-app.get('/cartNumber/:id',ctrl.cartNumber)
-app.get('/getCartTotal/:id',ctrl.getCartTotal)
+app.post('/addToCart',cartCtrl.addToCart)
+app.get('/getCart/:user_id',cartCtrl.getCart)
+app.get('/getItem/:item_id',cartCtrl.getItem)
+app.get('/cartNumber/:id',cartCtrl.cartNumber)
+app.get('/getCartTotal/:id',cartCtrl.getCartTotal)
 
-app.post('/payment', cors(), ctrl.payment)
+// app.post('/payment', cors(), cartCtrl.payment)
 
 
 app.listen(PORT, console.log(`RUNNING @ PORT ${PORT}`))
