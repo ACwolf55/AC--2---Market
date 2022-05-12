@@ -7,7 +7,8 @@ interface PropsItem {
         id:number,
         name:string,
         price: number,
-        description: string
+        description: string,
+        pic_url: string
     }
 }
 
@@ -58,7 +59,8 @@ function Item(props: PropsItem) {
         {/* <button onClick={deincrement}>-</button>
         <button onClick={increment}>+</button> */}
         {/* <p>{number}</p> */}
-        {/* <img src={props.item.imgurl}></img> */}
+        <img className='fruit-pic' src={props.item.pic_url}></img>
+        <br></br>
         <button onClick={addToCart}>add</button>
     </div>
   }
