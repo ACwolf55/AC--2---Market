@@ -10,12 +10,15 @@ export default function CheckOut() {
     const [showCart, setShowCart] = useState(false)
     const [purchased,setPurchased] = useState(false)
     const [total,setTotal] = useState(0)
+    const [totalDisplay, setTotalDisplay] = useState('')
     const [data, setdata] = useState(0)
 
 
     useEffect(()=>{
      axios.get(`/getCartTotal/${id}`).then((res=>{
-        let num = parseFloat(res.data)
+         setTotalDisplay(res.data)
+        let num = res.data*100
+      num = parseFloat(num)
         console.log(res.data)
         setTotal(num)
      }))
@@ -25,7 +28,7 @@ return(
     <div>
     {/* <StripeContainer/>  */}
     <h1>Total</h1>
-    <p>{total}</p>
+    <p>${totalDisplay}</p>
    
 
         

@@ -5,6 +5,7 @@ const userCtrl = require('./userController')
 const cartCtrl = require('./cartController')
 const cors = require('cors')
 const bodyParser = require('body-parser');
+const { read } = require('fs')
 
 const PORT = 5000
 
@@ -49,6 +50,11 @@ app.get('/getCart/:user_id',cartCtrl.getCart)
 app.get('/getItem/:item_id',cartCtrl.getItem)
 app.get('/cartNumber/:id',cartCtrl.cartNumber)
 app.get('/getCartTotal/:id',cartCtrl.getCartTotal)
+app.post('payment', async (req,res)=>{
+    let status , error;
+    const {token,amount} = req.body
+    console.log(token)
+})*
 
 // app.post('/payment', cors(), cartCtrl.payment)
 
