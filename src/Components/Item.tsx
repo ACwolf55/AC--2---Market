@@ -53,11 +53,12 @@ function Item(props: PropsItem) {
     {itemAdded ? <p>item added!</p> :  
 
     <div className='item-normal'>
-        <p>Item!</p>
         <p>{props.item.name}</p>
+        <p>${props.item.price}</p>
         {/* <button onClick={deincrement}>-</button>
         <button onClick={increment}>+</button> */}
-        <p>{number}</p>
+        {/* <p>{number}</p> */}
+        {/* <img src={props.item.imgurl}></img> */}
         <button onClick={addToCart}>add</button>
     </div>
   }

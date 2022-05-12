@@ -15,6 +15,7 @@ app.use(bodyParser.json())
 app.use(cors())
 
 
+
 const testCart = [
     {name:"apple",
     price:.50}
@@ -31,13 +32,19 @@ app.get('/test',(req,res)=>{
 app.get('/test2',userCtrl.test2)
 
 
-app.post('/register',userCtrl.register)
-app.post('/login',userCtrl.login)
+app.post('/register', userCtrl.register)
+
+
+
+app.post('/login', userCtrl.login)
 
 
 app.get('/shop', cartCtrl.allItems)
 
+
+  
 app.post('/addToCart',cartCtrl.addToCart)
+
 app.get('/getCart/:user_id',cartCtrl.getCart)
 app.get('/getItem/:item_id',cartCtrl.getItem)
 app.get('/cartNumber/:id',cartCtrl.cartNumber)

@@ -38,6 +38,7 @@ export default function Register() {
 
 
   return (
+
     <div className='register'>
 
 <form onSubmit={register}>

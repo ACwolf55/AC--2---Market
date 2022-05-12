@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react';
 import axios from 'axios';
 import CartItem from './CartItem';
 import { useNavigate } from "react-router-dom";
+import Header from './Header';
 
 
 function Cart() {
@@ -39,6 +40,8 @@ function Cart() {
 
   return (
     <div className="Market">  
+
+    <Header/>
         <h3>Marketplace</h3>
 
         <div className='item-map'> 

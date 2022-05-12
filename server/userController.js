@@ -43,10 +43,9 @@ module.exports = {
 
   },
 
-  login: async (req, res) => {
+  login: (req, res) => {
     let { username, password } = req.body;
-    await sequelize
-      .query(`SELECT * FROM users WHERE username = '${username}';`)
+     sequelize.query(`SELECT * FROM users WHERE username = '${username}';`)
       .then((user) => {
         user = user[0][0];
        password === user.password

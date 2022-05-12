@@ -9,14 +9,11 @@ function Market() {
   // const[number, setNumber] = useState<number>(1)
   // const[number, setNumber] = useState<number | string>(1)
   const[loading, setLoading] = useState<boolean>(true)
-
-
   const [items, setItems] = useState([]);
 
   useEffect(()=>{
     axios.get('/shop').then((res)=>{
       setItems(res.data)
-      
     })},[])
 
   const increment =()=>{
@@ -37,7 +34,7 @@ function Market() {
             return(
             <Item item={element}/>
             )
-        })}
+        })}  
     
         </div>
       </> 

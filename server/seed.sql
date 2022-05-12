@@ -16,7 +16,6 @@ CREATE TABLE Cart (
     user_id INT REFERENCES users(id),
     item_id INT REFERENCES items(id),
     
-
 );
 
 
