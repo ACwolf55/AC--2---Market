@@ -24,6 +24,21 @@ export default function CheckOut() {
      }))
     })
 
+    const pay = async token =>{
+
+        axios.post('/payment',{amount:total,token}).then((res=>{
+        console.log('payemt fucn firered')
+        if(res.status===200){
+            alert('successful payment!')
+        }
+        else{
+            alert('payment unsuccessful')
+        }
+
+        }))
+
+    }
+
 return(
     <div>
     {/* <StripeContainer/>  */}
@@ -40,6 +55,7 @@ return(
             shippingAddress
             amount={total}
             description='test!'
+            token={pay}
         />
 
 

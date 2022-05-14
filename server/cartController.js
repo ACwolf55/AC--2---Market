@@ -2,6 +2,7 @@ require("dotenv").config();
 const { DATABASE_URI } = process.env;
 const Sequelize = require("sequelize");
 const bcrypt = require("bcryptjs");
+const { default: Stripe } = require("stripe");
 const stripe = require('stripe')(process.env.STRIPE_SECRET_TEST)
 
 // you wouldn't want to rejectUnauthorized in a production app, but it's great for practice
@@ -74,5 +75,24 @@ module.exports = {
         return res.status(200).send(sum)
       
         })
+    },
+    payment: async(req,res) =>{
+      let status , error;
+      const {token,amount} = req.body
+
+      try{
+        await stripe.charges.create({
+          source:token.id,
+          amount,
+          currency:'usd'
+        })
+        console.log('stripe bakcend firered')
+        status='Success'
+      }catch(error){
+        console.log(error)
+        status= 'Failure'
+      }
+      res.json({error,status})
+  
     }
 };

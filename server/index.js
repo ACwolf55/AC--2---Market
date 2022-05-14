@@ -50,13 +50,9 @@ app.get('/getCart/:user_id',cartCtrl.getCart)
 app.get('/getItem/:item_id',cartCtrl.getItem)
 app.get('/cartNumber/:id',cartCtrl.cartNumber)
 app.get('/getCartTotal/:id',cartCtrl.getCartTotal)
-app.post('payment', async (req,res)=>{
-    let status , error;
-    const {token,amount} = req.body
-    console.log(token)
-})*
 
-// app.post('/payment', cors(), cartCtrl.payment)
+
+app.post('/payment', cartCtrl.payment)
 
 
 app.listen(PORT, console.log(`RUNNING @ PORT ${PORT}`))
