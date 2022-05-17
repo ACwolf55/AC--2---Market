@@ -57,7 +57,8 @@ main{
   margin: 20px;
 }
 
-.item-map {
+.cart-display {
+  padding: 20px;
   border: black solid 1px;
   background-color: aquamarine;
 
@@ -88,4 +89,14 @@ main{
 .fruit-pic{
   height: 20%;
   width: 20%;
+}
+
+.register{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  height: 50vh;
+  width: 100vw;
+
 }

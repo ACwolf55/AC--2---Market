@@ -63,14 +63,16 @@ function Auth() {
   return (
     <div className="Auth">
       {loginName !== null ?
+      <>
       <div id='cart'onClick={()=>navigate('/Cart')} style={{cursor: 'pointer'}} >
         <div className="cartNumLogo">{cartNumber==null?"loading" : cartNumber}</div>
         <img src={cartLogo} id='cart-logo'/>
+       </div>
         <h4>view cart</h4>
         <div/>
        <div>{loginName}</div> 
        <button onClick={logout}>Logout</button>
-       </div>
+       </>
        :
        <>
         <form onSubmit={login}>

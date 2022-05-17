@@ -43,15 +43,24 @@ function Cart() {
 
     <Header/>
         <h3>Marketplace</h3>
-
+        
+        <div className='cart-display'>
+        <button onClick={checkOut}>Check Out</button>
         <div className='item-map'> 
+        {cart[0].id===0
+        ?
+        <p>loading</p>
+        :
+        <>
               {cart.map(element=>{
                 return(
                 <CartItem item={element}/>
                 )
             })}
-            <button onClick={checkOut}>Check Out</button>
-        </div>
+          </>
+          }
+          </div>
+          </div>
 
     </div>
   )

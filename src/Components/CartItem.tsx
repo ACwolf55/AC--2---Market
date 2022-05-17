@@ -5,7 +5,8 @@ interface PropsItem {
     item:{id:Number,
     user_id: Number,
     item_id: Number,
-    quanity:Number
+    quanity:Number,
+
     }
 }
 
@@ -18,11 +19,13 @@ function CartItem(props: PropsItem) {
     id:"",
     name:"",
     price: "",
-    description: ""
+    description: "",
+    pic_url:''
   })
+ 
 
   useEffect(() => {
-    console.log(props.item.item_id)
+  
     axios.get(`/getItem/${props.item.item_id}`).then((res)=>{
       console.log(res.data)
         setItem(res.data)
@@ -31,29 +34,19 @@ function CartItem(props: PropsItem) {
   }, [])
   
 
-
-  const increment =()=>{
-    setNumber(prevState=> prevState+1)
-    // setNumber("5") typescript error
-  }
-  const deincrement =()=>{
-    if(number>0){
-    setNumber(prevState=> prevState-1)
-    console.log(item)
-    }
-  }
-  
   return (
     <div className='item-card'>
-      {item==null 
+      {item.id===''
       ?
-      <p>loading</p>
+      <>
+      <p style={{color: "black"}}>loading</p>
+      </>
       :
         <div className='Item'>
-        <p>Item!</p>
+      
         <p>{item.name}</p>
-        <button onClick={deincrement}>-</button>
-        <button onClick={increment}>+</button>
+        <img className='fruit-pic' src={item.pic_url}></img>
+        <p>{item.price}</p>
       </div>
 }
     </div>
