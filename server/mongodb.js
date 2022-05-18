@@ -1,10 +1,11 @@
-const { findAllByAltText } = require('@testing-library/react');
+require("dotenv").config(); 
 const {MongoClient} = require('mongodb')
+const { MongoURI } = process.env;
 
 async function main (){
     const uri = 'mongo URI here'
 
-    const client = new MongoClient(uri)
+    const client = new MongoClient(MongoURI,{ useNewUrlParser:true, useUnifiedTopology: true})
 
     try {
     await client.connect()
@@ -15,7 +16,11 @@ async function main (){
     }
 } 
 
-main().catch(console.error)
+async function listDatabases(client){
+    const dbList = await client.db().admin().listDatabases();
+
+    console.log(dbList)
+    dbList.databases.forEach(db => console.log(` - ${db.name}`))
+}
 
 
-O

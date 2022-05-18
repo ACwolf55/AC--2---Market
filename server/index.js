@@ -1,32 +1,62 @@
 const express = require('express')
 const app = express()
-// const Sequelize = require('sequelize')
 const userCtrl = require('./userController')
 const cartCtrl = require('./cartController')
 const cors = require('cors')
 const bodyParser = require('body-parser');
-const { read } = require('fs')
+
+require("dotenv").config(); 
+const {MongoClient} = require('mongodb')
+const { MongoURI } = process.env;
+
 
 const PORT = 5000
-
-
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 app.use(cors())
 
+async function main (){
+    const uri = 'mongo URI here'
+
+    const client = new MongoClient(MongoURI,{ useNewUrlParser:true, useUnifiedTopology: true})
+
+    try {
+    await client.connect()
+    await listDatabases(client)
+    } catch (e){
+        console.error(e)
+    } finally {
+        await client.close()
+    }
+} 
+
+async function listDatabases(client){
+    const dbList = await client.db().admin().listDatabases();
+
+    console.log(dbList)
+    dbList.databases.forEach(db => console.log(` - ${db.name}`))
+}
+
+main()
 
 
-const testCart = [
-    {name:"apple",
-    price:.50}
-    ,
-    {name:"mango",
-    price:.50}
-]
+
+
+
+
+
 
 
 app.get('/test',(req,res)=>{
+    
+    const testCart = [
+        {name:"apple",
+        price:.50}
+        ,
+        {name:"mango",
+        price:.50}
+    ]
     res.send(testCart)
     })
 
