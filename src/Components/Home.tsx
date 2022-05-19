@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Header from './Header'
 import Market from './Market';
-import Auth from './Auth'
+import Nav from './Nav'
 
 
 function Home() {
@@ -34,7 +34,7 @@ function Home() {
     <Header/>
           <main>
         <Market/>
-      <Auth/>
+      <Nav/>
     </main>
    
 

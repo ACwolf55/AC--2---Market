@@ -22,18 +22,8 @@ function Item(props: PropsItem) {
   const[itemAdded, setItemAdded] = useState<boolean>(false)
 
 
-  const increment =()=>{
-    setNumber(prevState=> prevState+1)
-    // setNumber("5") typescript error
-  }
-  const deincrement =()=>{
-    if(number>0){
-    setNumber(prevState=> prevState-1)
-    }
-  }
   
   const addToCart=()=>{
-    let user_id = sessionStorage.getItem("id");
     if(user_id==null){
       alert('login to add to cart!')
     }else{

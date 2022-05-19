@@ -4,7 +4,7 @@ import Item from './Item';
 
 
 function Market() {
-
+ 
   const[number, setNumber] = useState(1)
   // const[number, setNumber] = useState<number>(1)
   // const[number, setNumber] = useState<number | string>(1)

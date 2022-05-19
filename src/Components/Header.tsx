@@ -6,7 +6,7 @@ function Header() {
  
   return (
     <header>    
-          <p>~   AC - 2 - Market   ~</p>
+          <h1>~   AC - 2 - Market   ~</h1>
 
 
     </header>

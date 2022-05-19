@@ -35,6 +35,8 @@ function Auth() {
   }, [loaded])
 
 
+  
+
   const login = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     console.log(username, password)
@@ -61,16 +63,16 @@ function Auth() {
 
 
   return (
-    <div className="Auth">
+    <nav>
       {loginName !== null ?
       <>
-      <div id='cart'onClick={()=>navigate('/Cart')} style={{cursor: 'pointer'}} >
+       <h2>{loginName}</h2> 
+      <div className='cart-click' onClick={()=>navigate('/Cart')}>
         <div className="cartNumLogo">{cartNumber==null?"loading" : cartNumber}</div>
         <img src={cartLogo} id='cart-logo'/>
-       </div>
         <h4>view cart</h4>
+       </div>
         <div/>
-       <div>{loginName}</div> 
        <button onClick={logout}>Logout</button>
        </>
        :
@@ -98,7 +100,7 @@ function Auth() {
        }
      
       <p style={{color:'black'}}>{loaded}</p>
-    </div>
+    </nav>
   );
 }
 

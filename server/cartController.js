@@ -30,7 +30,7 @@ module.exports = {
       user_id = parseInt(user_id)
       console.log(req.body)
       sequelize.query(`INSERT INTO cart (user_id, item_id, quanity) VALUES(${user_id},${item_id},${quanity}); SELECT * FROM cart WHERE user_id = ${user_id}`).then((dbRes)=>{
-        console.log('db .then')
+
         return res.status(200).send(dbRes[0])
       }).catch(err => {
         console.log(err);
@@ -40,7 +40,6 @@ module.exports = {
     },
     getCart: (req,res)=>{
       const user_id = parseInt(req.params.user_id)
-      console.log('test')
       sequelize.query(`SELECT * FROM cart WHERE user_id = ${user_id}`).then((dbRes)=>{
         console.log(dbRes)
         return res.status(200).send(dbRes[0])

@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import TestStripe from './TestStripe'
+
 import axios from "axios";
 import StripeCheckout from 'react-stripe-checkout'
 
@@ -22,7 +22,7 @@ export default function CheckOut() {
         console.log(res.data)
         setTotal(num)
      }))
-    })
+    },[])
 
     const pay = async token =>{
 
@@ -40,8 +40,8 @@ export default function CheckOut() {
     }
 
 return(
-    <div>
-    {/* <StripeContainer/>  */}
+    <div className="Checkout">
+   
     <h1>Total</h1>
     <p>${totalDisplay}</p>
    

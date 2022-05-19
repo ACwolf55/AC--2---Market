@@ -32,6 +32,10 @@ function CartItem(props: PropsItem) {
     })
   
   }, [])
+
+  const deleteItem =()=>{
+    //axios.delete(`/deleteCartItem/${item.id}.then(res))
+  }
   
 
   return (
@@ -47,6 +51,7 @@ function CartItem(props: PropsItem) {
         <p>{item.name}</p>
         <img className='fruit-pic' src={item.pic_url}></img>
         <p>{item.price}</p>
+        <button onClick={deleteItem}>Delete</button>
       </div>
 }
     </div>

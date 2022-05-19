@@ -12,9 +12,15 @@ body{
   color:rgb(132, 224, 255);
 }
 
+.Home{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 header{
   border: 1px solid blue;
-  width: 80vw;
+  width: 100vw;
   height: 10vh;
   margin-top: 20px ;
 }
@@ -26,7 +32,10 @@ main{
   width: 100vw;
 }
 
-.Auth{
+nav{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   background-color: aliceblue;
   width: 10vw;
   height: 70vh;
@@ -34,9 +43,12 @@ main{
 }
 
 .Market{
+  display: flex;
+  flex-direction: column;
+  justify-content:center ;
+  align-items: center;
   background-color: aliceblue;
   width: 60vw;
-  height: 80vh;
   margin-left: 150px;
 }
 
@@ -61,8 +73,16 @@ main{
   padding: 20px;
   border: black solid 1px;
   background-color: aquamarine;
+}
 
-  
+.cart-click{
+  background-color: rgb(140, 149, 157);
+  padding: 5%;
+}
+
+.cart-click:hover{
+  background-color: rgb(169, 190, 209);
+  cursor: pointer
 }
 
 #cart-logo{

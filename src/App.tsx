@@ -1,10 +1,6 @@
 import React, {useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Home from './Components/Home';
-import Header from './Components/Header'
-import Market from './Components/Market';
-import Auth from './Components/Auth'
 import Cart from './Components/Cart'
 import CheckOut from './Components/CheckOut';
 import {Route, Routes,Link} from 'react-router-dom'

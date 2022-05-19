@@ -8,6 +8,7 @@ import Header from './Header';
 function Cart() {
   const navigate = useNavigate();
   let id = sessionStorage.getItem("id");
+  let username = sessionStorage.getItem("username");
   const[number, setNumber] = useState(1)
   // const[number, setNumber] = useState<number>(1)
   // const[number, setNumber] = useState<number | string>(1)
@@ -42,8 +43,8 @@ function Cart() {
     <div className="Market">  
 
     <Header/>
-        <h3>Marketplace</h3>
-        
+  
+    <h3>{`${username}'s cart`}</h3>
         <div className='cart-display'>
         <button onClick={checkOut}>Check Out</button>
         <div className='item-map'> 

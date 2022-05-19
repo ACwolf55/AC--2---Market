@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 app.use(cors())
 
-async function main (){
+async function mongoDBconnect (){
     const uri = 'mongo URI here'
 
     const client = new MongoClient(MongoURI,{ useNewUrlParser:true, useUnifiedTopology: true})
@@ -38,27 +38,8 @@ async function listDatabases(client){
     dbList.databases.forEach(db => console.log(` - ${db.name}`))
 }
 
-main()
+mongoDBconnect()
 
-
-
-
-
-
-
-
-
-app.get('/test',(req,res)=>{
-    
-    const testCart = [
-        {name:"apple",
-        price:.50}
-        ,
-        {name:"mango",
-        price:.50}
-    ]
-    res.send(testCart)
-    })
 
 app.get('/test2',userCtrl.test2)
 
