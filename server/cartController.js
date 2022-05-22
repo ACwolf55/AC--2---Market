@@ -67,7 +67,7 @@ module.exports = {
       const id =  parseInt(req.params.id)
 
       sequelize.query(`
-      SELECT SUM(price) FROM items i
+      SELECT * FROM items i
       JOIN cart c on c.item_id = i.id
         WHERE c.user_id = ${id}; `)
         .then((dbRes)=>{

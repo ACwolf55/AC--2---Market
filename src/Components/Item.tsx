@@ -27,7 +27,7 @@ function Item(props: PropsItem) {
     if(user_id==null){
       alert('login to add to cart!')
     }else{
-    axios.post('/addToCart',{user_id:user_id,item_id:props.item.id,quanity:number }).then((res)=>{
+    axios.post('/addToCart',{user_id:user_id,item_id:props.item.id }).then((res)=>{
       console.log(res.data)
       console.log(itemAdded)
       setItemAdded(true)
@@ -46,9 +46,6 @@ function Item(props: PropsItem) {
     <div className='item-normal'>
         <p>{props.item.name}</p>
         <p>${props.item.price}</p>
-        {/* <button onClick={deincrement}>-</button>
-        <button onClick={increment}>+</button> */}
-        {/* <p>{number}</p> */}
         <img className='fruit-pic' src={props.item.pic_url}></img>
         <br></br>
         <button onClick={addToCart}>add</button>

@@ -1,13 +1,27 @@
 {
-    "items":[{asdas:ssdfs,
-        sdfsdfsfsdfdsdfsdfs}],
-    "cart id":6,
-    "cost": 13213,
-    "userid":1321,
-    "succesful payment":true,
-    "order Shipped":true,
-    "order revcicved":true,
-    "order number":231321
-    
+    "items":[
+        {
+            "id":2,
+            "name":"Apple",
+            "price": 0.4,
+            "description": "red fruit",
+            "pic_url":"https://pics.clipartpng.com/midle/Apple_PNG_Clip_Art-1467.png"
+        },
+        {
+            "id":1,
+            "name":"Peach",
+            "price": 0.4,
+            "description": "sweet yellow/orange fruit",
+            "pic_url":"https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Fruit-PNG/Peach_PNG_Clipart-1244750056.png?m=1600854249"
+        }
+    ],
+    "user_id":6,
+    "cost": 0.8,
+    "succesful_payment":true,
+    "order_shipped":false,
+    "order_delivered":false,
+    "order number":3,
+    "notes":["order all good"]
+
 }
 
