@@ -14,8 +14,8 @@ function Market() {
   useEffect(()=>{
     axios.get('/shop').then((res)=>{
       setItems(res.data)
-      [{},{},{}]
     })},[])
+
 
   const increment =()=>{
     setNumber(prevState=> prevState+1)

@@ -45,6 +45,16 @@ module.exports = {
         return res.status(200).send(dbRes[0])
       })
     },
+    getCartItems: (req,res)=>{
+      const id = parseInt(req.params.user_id)
+      sequelize.query(`
+      SELECT * FROM items i
+      JOIN cart c on c.item_id = i.id
+        WHERE c.user_id = ${id}; `).then((dbRes)=>{
+        console.log(dbRes)
+        return res.status(200).send(dbRes[0])
+      })
+    },
 
     getItem:(req,res)=>{
       const item_id = parseInt(req.params.item_id)
@@ -67,7 +77,7 @@ module.exports = {
       const id =  parseInt(req.params.id)
 
       sequelize.query(`
-      SELECT * FROM items i
+      SELECT SUM(price) FROM items i
       JOIN cart c on c.item_id = i.id
         WHERE c.user_id = ${id}; `)
         .then((dbRes)=>{
@@ -86,6 +96,7 @@ module.exports = {
           amount,
           currency:'usd'
         })
+        
         console.log('stripe bakcend firered')
         status='Success'
       }catch(error){

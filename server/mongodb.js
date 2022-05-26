@@ -2,6 +2,18 @@ require("dotenv").config();
 const {MongoClient} = require('mongodb')
 const { MongoURI } = process.env;
 const client = new MongoClient(MongoURI,{ useNewUrlParser:true, useUnifiedTopology: true})
+const { DATABASE_URI } = process.env;
+const Sequelize = require("sequelize");
+
+const sequelize = new Sequelize(DATABASE_URI, {
+    dialect: "postgres",
+    dialectOptions: {
+      ssl: {
+        rejectUnauthorized: false,
+      },
+    },
+  });
+  
 
 
 
@@ -28,18 +40,22 @@ module.exports = {
     },
 
     newOrder: async (req, res) => {
-        const {order} = req.body
-        try {
-            await client.connect()
-            const postedOrder = await client.db('AC-2-Market').collection('orders').insertOne(order)
-            return res.send(postedOrder.insertedId)
+            const {order} = req.body
+         
+              try {
+                  await client.connect()
 
-            } catch (e){
-                console.error(e)
-            } finally {
-                await client.close()
+
+                  const postedOrder = await client.db('AC-2-Market').collection('orders').insertOne(order)
+                  return res.send(postedOrder.insertedId)
+                  
+                } catch (e){
+                    console.error(e)
+                } finally {
+                    await client.close()
+                }
             }
-    }
+        
 
 
 

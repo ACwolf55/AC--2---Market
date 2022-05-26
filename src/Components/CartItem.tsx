@@ -1,35 +1,35 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 
-interface PropsItem {
-    item:{id:Number,
-    user_id: Number,
-    item_id: Number,
-    quanity:Number,
+// interface PropsItem {
+//     item:{id:Number,
+//     user_id: Number,
+//     item_id: Number,
+//     quanity:Number,
 
-    }
+//     }
+// }
+
+interface PropsItem {
+  item:{ id:String,
+    name:String,
+    price: String,
+    description: String,
+    pic_url:string
+
+  }
 }
 
 function CartItem(props: PropsItem) {
 
-  let user_id = sessionStorage.getItem("id");
-
-  const[number, setNumber] = useState(1)
-  const[item,setItem] = useState({
-    id:"",
-    name:"",
-    price: "",
-    description: "",
-    pic_url:''
-  })
+  let id = sessionStorage.getItem("id");
+  const [total,setTotal] =useState(0)
  
 
   useEffect(() => {
+
   
-    axios.get(`/getItem/${props.item.item_id}`).then((res)=>{
-      console.log(res.data)
-        setItem(res.data)
-    })
+    console.log(props.item)
   
   }, [])
 
@@ -40,20 +40,21 @@ function CartItem(props: PropsItem) {
 
   return (
     <div className='item-card'>
-      {item.id===''
+      {props.item.id===''
       ?
       <>
-      <p style={{color: "black"}}>loading</p>
+      <p style={{color: "black"}}>...</p>
       </>
       :
         <div className='Item'>
       
-        <p>{item.name}</p>
-        <img className='fruit-pic' src={item.pic_url}></img>
-        <p>{item.price}</p>
+        <p>{props.item.name}</p>
+        <img className='fruit-pic' src={props.item.pic_url} ></img>
+        <p>{props.item.price}</p>
         <button onClick={deleteItem}>Delete</button>
       </div>
 }
+
     </div>
   );
 }

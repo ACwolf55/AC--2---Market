@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import cartLogo from './cart.png'
 
 
-function Auth() {
+function Nav() {
   const navigate = useNavigate();
   let loginName = sessionStorage.getItem("username");
   let id = sessionStorage.getItem("id");
@@ -104,4 +104,4 @@ function Auth() {
   );
 }
 
-export default Auth;
+export default Nav;

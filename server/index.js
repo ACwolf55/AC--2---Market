@@ -37,6 +37,8 @@ app.post('/addToCart',cartCtrl.addToCart)
 
 app.get('/getCart/:user_id',cartCtrl.getCart)
 app.get('/getItem/:item_id',cartCtrl.getItem)
+app.get('/getCartItems/:user_id',cartCtrl.getCartItems)
+
 app.get('/cartNumber/:id',cartCtrl.cartNumber)
 app.get('/getCartTotal/:id',cartCtrl.getCartTotal)
 
