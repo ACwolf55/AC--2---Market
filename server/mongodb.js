@@ -47,8 +47,10 @@ module.exports = {
 
 
                   const postedOrder = await client.db('AC-2-Market').collection('orders').insertOne(order)
+                  sequelize.query(`DELETE FROM cart WHERE user_id=${order.user_id}`).then((dbRes)=>{
+                    console.log('cart cleared!')
+                  })
                   return res.send(postedOrder.insertedId)
-                  
                 } catch (e){
                     console.error(e)
                 } finally {

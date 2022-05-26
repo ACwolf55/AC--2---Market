@@ -27,6 +27,7 @@ module.exports = {
 
     addToCart: (req,res)=>{
       let {user_id,item_id,quanity} = req.body
+      console.log(req.body)
       user_id = parseInt(user_id)
       console.log(req.body)
       sequelize.query(`INSERT INTO cart (user_id, item_id, quanity) VALUES(${user_id},${item_id},${quanity}); SELECT * FROM cart WHERE user_id = ${user_id}`).then((dbRes)=>{

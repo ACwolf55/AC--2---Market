@@ -110,6 +110,10 @@ nav{
   height: 20%;
   width: 20%;
 }
+#checkmark{
+  height:15%;
+  width:20%;
+}
 
 .register{
   display: flex;

@@ -1,11 +1,12 @@
 import React, { useState,useEffect } from "react";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import StripeCheckout from 'react-stripe-checkout'
 
 
 export default function CheckOut() {
     let id = sessionStorage.getItem("id");
+    const navigate = useNavigate()
     const location = useLocation()
     const {cart} = location.state
 
@@ -52,7 +53,7 @@ export default function CheckOut() {
                 "succesful_payment":true,
                 "order_shipped":false,
                 "order_delivered":false,
-                "order number":4,
+                "order number":6,
                 "notes":["order all good"]
             
             }
@@ -63,6 +64,9 @@ export default function CheckOut() {
                 console.log(res.data)
             })
             alert('successful payment!')
+             navigate('/')
+           
+              
         }
         else{
             alert('payment unsuccessful')
