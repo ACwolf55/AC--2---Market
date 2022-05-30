@@ -2,10 +2,10 @@ require("dotenv").config();
 const {MongoClient} = require('mongodb')
 const { MongoURI } = process.env;
 const client = new MongoClient(MongoURI,{ useNewUrlParser:true, useUnifiedTopology: true})
-const { DATABASE_URI } = process.env;
+const { DATABASE_URL } = process.env;
 const Sequelize = require("sequelize");
 
-const sequelize = new Sequelize(DATABASE_URI, {
+const sequelize = new Sequelize(DATABASE_URL, {
     dialect: "postgres",
     dialectOptions: {
       ssl: {

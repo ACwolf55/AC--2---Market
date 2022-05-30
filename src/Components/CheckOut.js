@@ -26,8 +26,6 @@ export default function CheckOut() {
     
     })
    
-
-
     useEffect(()=>{
         console.log(location.state)
       
@@ -57,8 +55,6 @@ export default function CheckOut() {
                 "notes":["order all good"]
             
             }
-
-
 
             axios.post('/newOrder',{order}).then((res)=>{
                 console.log(res.data)

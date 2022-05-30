@@ -4,6 +4,7 @@ const userCtrl = require('./userController')
 const cartCtrl = require('./cartController')
 const MongoCtrl = require('./mongodb')
 const cors = require('cors')
+const path =require('path')
 const bodyParser = require('body-parser');
 
 require("dotenv").config(); 
@@ -12,18 +13,21 @@ const { MongoURI } = process.env;
 
 
 
-const PORT = 5000
+const {PORT} = process.env
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 app.use(cors())
+//for heroku deployement
+app.use(express.static(path.resolve(`${__dirname}/../build`))) 
+
+app.listen(PORT, console.log(`RUNNING @ PORT ${PORT}`))
 
 
+///endpoints / controllers
 
 app.post('/newOrder',MongoCtrl.newOrder)
-
 app.get('/mongoDBtest',MongoCtrl.listDatabases)
-
 
 app.get('/test2',userCtrl.test2)
 
@@ -45,5 +49,3 @@ app.get('/getCartTotal/:id',cartCtrl.getCartTotal)
 
 app.post('/payment', cartCtrl.payment)
 
-
-app.listen(PORT, console.log(`RUNNING @ PORT ${PORT}`))

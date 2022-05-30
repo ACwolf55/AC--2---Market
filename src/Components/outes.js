@@ -1,3 +1,7 @@
+// 1st npm i react-router-dom
+
+
+
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 
@@ -12,6 +16,8 @@ export default function index() {
     
   )
 }
+
+///////////////////////////
 
 
 import React from 'react'
@@ -35,12 +41,12 @@ export default function App() {
   )
 }
 
-
+//////////////////
 import React from 'react'
 import App from '../App'
 import { useNavigate,Link } from 'react-router-dom'
 
-export default function COmpont() {
+export default function Compont() {
 
     const navigate = useNavigate()
 
@@ -49,6 +55,8 @@ export default function COmpont() {
     <div>
 
     <button onClick={()=>navigate('/Cart')}>Cart</button>
+    
+    
     <Link to="/Cart">Cart</Link>
 
     </div>

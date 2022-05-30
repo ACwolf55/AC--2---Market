@@ -1,11 +1,11 @@
 require("dotenv").config(); 
-const { DATABASE_URI } = process.env;
+const { DATABASE_URL } = process.env;
 const Sequelize = require("sequelize");
 const bcrypt = require("bcryptjs");
 const stripe = require('stripe')(process.env.STRIPE_SECRET_TEST)
 
 // you wouldn't want to rejectUnauthorized in a production app, but it's great for practice
-const sequelize = new Sequelize(DATABASE_URI, {
+const sequelize = new Sequelize(DATABASE_URL, {
   dialect: "postgres",
   dialectOptions: {
     ssl: {
