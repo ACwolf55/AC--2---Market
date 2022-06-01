@@ -24,7 +24,7 @@ module.exports = {
     // sequelize.query(`SELECT * FROM items;`).then((dbRes) => {
     //   res.send(dbRes[0]);
     // })
-    console.log(DATABASE_URL)
+    return res.send(DATABASE_URL)
   },
 
     addToCart: (req,res)=>{
