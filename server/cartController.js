@@ -21,10 +21,10 @@ module.exports = {
 
   allItems: (req, res) => {
   
-    // sequelize.query(`SELECT * FROM items;`).then((dbRes) => {
-    //   res.send(dbRes[0]);
-    // })
-    return res.send(DATABASE_URL)
+    sequelize.query(`SELECT * FROM items;`).then((dbRes) => {
+      res.send(dbRes[0]);
+    })
+
   },
 
     addToCart: (req,res)=>{
