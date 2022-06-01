@@ -20,6 +20,7 @@ module.exports = {
 
 
   allItems: (req, res) => {
+    console.log(DATABASE_URL)
     sequelize.query(`SELECT * FROM items;`).then((dbRes) => {
       res.send(dbRes[0]);
     })
