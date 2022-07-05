@@ -23,6 +23,7 @@ function Nav() {
     console.log(cartNumber)
     let loginName = sessionStorage.getItem("username");
     let id = sessionStorage.getItem("id");
+    if(id!==null){
     axios.get(`/cartNumber/${id}`).then((res)=>{
         setCartNumber(res.data)
     })
@@ -32,6 +33,7 @@ function Nav() {
     if(loginName==null){
       setLoaded(false)
     }
+  }
   }, [loaded])
 
 
