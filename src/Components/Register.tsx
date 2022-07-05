@@ -28,8 +28,12 @@ export default function Register() {
           alert("must enter password");
         } else {
           axios.post("/register", { username, password }).then((res) => {
+            if(res.data =='username already exists'){
+              alert(res.data)
+            }else{
            alert(`registration complete! for: ${username}`)
            navigate('/')
+            }
     
           }).catch((err)=> console.log(err))
         }

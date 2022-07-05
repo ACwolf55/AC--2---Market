@@ -27,16 +27,17 @@ module.exports = {
     sequelize
       .query(`SELECT * FROM users WHERE username = '${username}';`)
       .then((dbRes) => {
-        if (!dbRes){
+        console.log(dbRes[0][0])
+        if (dbRes[0][0]){
+          return res.send('username already exists')
+        }
         sequelize
           .query(
             `INSERT INTO users (username, password) VALUES ('${username}', '${hash}') returning username;`
           )
           .then((dbRes) => res.status(200).send(dbRes[0][0]))
           .catch((err) => console.log(err));
-          }else{
-            return res.send('username already exists')
-          }
+      
       })
    
 
