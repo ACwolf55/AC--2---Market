@@ -23,7 +23,7 @@ function Item(props: PropsItem) {
 
 
   
-  const addToCart=()=>{
+  const addToCart=()=>{ 
 
     if(user_id==null){
       console.log(user_id)

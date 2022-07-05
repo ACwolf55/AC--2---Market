@@ -1,6 +1,6 @@
-// 1st npm i react-router-dom
+// 1st npm i react-router-dom   step 1
 
-
+//       ----------  index.js step 2
 
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
@@ -16,11 +16,12 @@ export default function index() {
     
   )
 }
-
-///////////////////////////
+// ----------------    APP.js step 3     declare routes
 
 
 import React from 'react'
+import Home from './Home'
+import Register from './Register'
 
 import { Routes,Route } from 'react-router-dom'
 
@@ -33,15 +34,13 @@ export default function App() {
           
         <Route path="/" element={ <Home/> } />
         <Route path='/Cart' element={<Cart/>}/>
-        <Route path='/CheckOut' element={<CheckOut/>}/>
         <Route path='/Register' element={<Register/>}/>
 
 
     </Routes>
   )
 }
-
-//////////////////
+// -----------------------  any component step 4          switch between routes / pages
 import React from 'react'
 import App from '../App'
 import { useNavigate,Link } from 'react-router-dom'
@@ -50,14 +49,19 @@ export default function Compont() {
 
     const navigate = useNavigate()
 
+    
+
+    
 
   return (
     <div>
 
-    <button onClick={()=>navigate('/Cart')}>Cart</button>
+    <button onClick={()=>navigate('/Cart')}>go to Cart</button>
     
     
-    <Link to="/Cart">Cart</Link>
+    <Link to="/Register"><img></img>
+    
+    </Link>
 
     </div>
   )

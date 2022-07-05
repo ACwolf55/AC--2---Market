@@ -10,6 +10,7 @@ function Market() {
   useEffect(()=>{
     axios.get('/shop').then((res)=>{
       setItems(res.data)
+      console.log(res.data)
       
     })},[])
 

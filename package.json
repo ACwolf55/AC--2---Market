@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "main": "./server/index.js",
-  "proxy": "http://localhost:5000",
+  "proxy": "http://localhost:5000/",
   "dependencies": {
     "@stripe/react-stripe-js": "^1.7.0",
     "@stripe/stripe-js": "^1.25.0",
@@ -21,7 +21,7 @@
     "dotenv": "^14.3.2",
     "express": "^4.17.2",
     "mongodb": "^4.5.0",
-    "nodemon": "^2.0.16",
+    "nodemon": "^2.0.18",
     "path": "^0.12.7",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",

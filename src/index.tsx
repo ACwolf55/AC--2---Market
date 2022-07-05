@@ -19,7 +19,9 @@ const options = {
 ReactDOM.render(
   <BrowserRouter>
     <Elements stripe={stripePromise} options={options}>
+
       <App />
+
     </Elements>
   </BrowserRouter>,
   document.getElementById("root")

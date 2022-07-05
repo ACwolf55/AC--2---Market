@@ -22,6 +22,7 @@ module.exports = {
   allItems: (req, res) => {
   
     sequelize.query(`SELECT * FROM items;`).then((dbRes) => {
+      console.log('asd')
       res.send(dbRes[0]);
     })
 
