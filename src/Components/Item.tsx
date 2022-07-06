@@ -52,7 +52,7 @@ function Item(props: PropsItem) {
     :  
 
     <div className='item-normal'>
-        <p>{props.item.name}</p>
+        <p>{props.item.name[0].charAt(0).toUpperCase() + props.item.name.slice(1)}</p>
         <p>${props.item.price}</p>
         <img className='fruit-pic' src={props.item.pic_url}></img>
         <br></br>
