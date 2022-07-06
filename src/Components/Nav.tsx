@@ -49,10 +49,11 @@ function Nav() {
       alert("must enter password");
     } else {
       axios.post("/login", { username, password }).then((res) => {
+        console.log(res.data)
         sessionStorage.setItem("username", res.data.username);
         sessionStorage.setItem("id", res.data.id);
         setLoaded(true);
-      }).catch((err)=> console.log(err))
+      }).catch((err)=> alert(err.response.request.response))
     }
   };
 

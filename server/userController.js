@@ -48,13 +48,16 @@ module.exports = {
      sequelize.query(`SELECT * FROM users WHERE username = '${username}';`)
       .then((user) => {
         user = user[0][0];
+        if(!user){
+          return res.status(401).send('User not found')
+        }
         let isAuth = bcrypt.compareSync(password, user.password);
         if (!isAuth) {
-          return res.status(403).send("Incorrect Password");
+          return res.status(401).send("incorrect password");
         }
         return res.status(200).send({ username: user.username, id: user.id });
       })
-      .catch((err) => console.log("username not found"));
+     
   },
 
 };
