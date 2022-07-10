@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
+import { Route, Routes} from 'react-router-dom'
 import Home from './Components/Home';
 import Cart from './Components/Cart'
 import CheckOut from './Components/CheckOut';
 import Register from './Components/Register';
-import { Route, Routes} from 'react-router-dom'
+import Orders from './Components/Orders';
  
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/Cart' element={<Cart/>}/>
         <Route path='/CheckOut' element={<CheckOut/>}/>
         <Route path='/Register' element={<Register/>}/>
+        <Route path='/Orders' element={<Orders/>}/>
       </Routes>
 
 

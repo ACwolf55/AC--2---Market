@@ -24,7 +24,7 @@ function Item(props: PropsItem) {
 
   
   const addToCart=()=>{ 
-
+    let user_id = sessionStorage.getItem("id");
     if(user_id==null){
       console.log(user_id)
       alert('login to add to cart!')

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState,useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import cartLogo from './cart.png'
 
 
@@ -76,6 +76,7 @@ function Nav() {
         <h4>view cart</h4>
        </div>
         <div/>
+        <Link to='/Orders'>View Orders</Link>
        <button onClick={logout}>Logout</button>
        </>
        :
