@@ -28,6 +28,7 @@ app.listen(PORT, console.log(`RUNNING @ PORT ${PORT}`))
 
 app.post('/newOrder',MongoCtrl.newOrder)
 app.get('/mongoDBtest',MongoCtrl.listDatabases)
+app.get('/userOrders/:user_id',MongoCtrl.userOrders)
 
 app.get('/test2',userCtrl.test2)
 

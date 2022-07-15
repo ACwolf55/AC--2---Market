@@ -56,9 +56,28 @@ module.exports = {
                 } finally {
                     await client.close()
                 }
-            }
-        
+            },
 
+
+      userOrders: async(req,res) =>{
+
+        const {user_id} = req.params
+ 
+        try {
+          await client.connect()
+
+          // const orders = await client.db('AC-2-Market').collection('orders').findOne() 
+          const cursor = await client.db('AC-2-Market').collection('orders').find( {user_id: user_id} )
+
+          const orders = await cursor.toArray()
+          return res.send(orders)
+
+        } catch (e){
+            console.error(e)
+        } finally {
+            await client.close()
+        }
+    }
 
 
 }
