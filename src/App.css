@@ -5,7 +5,6 @@ body{
 .App {
   display: Flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   text-align: center;
   height: 100vh;
@@ -33,17 +32,18 @@ header{
 main{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  width: 80vw;
+  justify-content: space-between;
+  width: 90vw;
 }
 
 nav{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
   background-color: rgb(65, 82, 95);
-  margin-top: 4%;
-  width: 12vw;
+  margin-top: 7%;
+  width: 14vw;
   height: 70vh;
   padding: 30px;
 }
@@ -53,10 +53,11 @@ nav{
   flex-direction: column;
   justify-content:center ;
   align-items: center;
+  margin-top: 20vh;
   background-color: rgb(46, 69, 88);
-  width: 45vw;
-  height: 80vh;
-  margin: 70px;
+  width: 90vw;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 .item-map{
@@ -133,6 +134,10 @@ nav{
   flex-direction: row;
   height: 50vh;
   width: 100vw;
+}
+
+.order{
+  border: 3px solid rgb(135, 94, 77);
 }
 
 @media (min-width:800px) {

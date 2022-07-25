@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
+import Order from './Order';
 
 export default function Orders() {
   let id = sessionStorage.getItem("id");
@@ -33,10 +34,7 @@ export default function Orders() {
       :
       <div className='orders-map'>
       {orders.map((item)=>{
-        return(
-        <p>{item.cost}</p>
-
-        )
+        return <Order order={item}/>
       })}
     </div>
 
