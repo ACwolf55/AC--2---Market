@@ -12,7 +12,7 @@ export default function Market() {
 
 
   useEffect(()=>{
-    axios.get('/shop').then((res)=>{
+    axios.get('/allItems').then((res)=>{
       setItems(res.data)
       console.log(res.data)
       
@@ -58,9 +58,9 @@ export default function Market() {
       ?
       <>
       <button onClick={resetSearch}>Back to Market</button>
-         {searchedArr.map(element=>{
+         {searchedArr.map(item=>{
             return(
-           <Item item={element}/>
+           <Item item={item}/>
             )
         })} 
       
@@ -68,9 +68,9 @@ export default function Market() {
       </>
       :
      <>
-        {items.map(element=>{
+        {items.map((item)=>{
             return(
-           <Item item={element}/>
+           <Item item={item}/>
             )
         })}  
         </>

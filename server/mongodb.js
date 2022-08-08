@@ -41,7 +41,6 @@ module.exports = {
 
     newOrder: async (req, res) => {
             const {order} = req.body
-         
               try {
                   await client.connect()
 

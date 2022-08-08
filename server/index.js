@@ -37,7 +37,7 @@ app.post('/register', userCtrl.register)
 app.post('/login', userCtrl.login)
 
 
-app.get('/shop', cartCtrl.allItems )
+app.get('/allItems', cartCtrl.allItems )
 app.post('/addToCart',cartCtrl.addToCart)
 
 app.get('/getCart/:user_id',cartCtrl.getCart)

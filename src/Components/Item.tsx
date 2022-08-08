@@ -14,7 +14,7 @@ interface PropsItem {
 
 function Item(props: PropsItem) {
   const navigate = useNavigate();
-  let user_id = sessionStorage.getItem("id");
+
 
   const[number, setNumber] = useState(1)
   // const[number, setNumber] = useState<number>(1)
