@@ -34,7 +34,12 @@ export default function Orders() {
       :
       <div className='orders-map'>
       {orders.map((item)=>{
-        return <Order order={item}/>
+        return (
+       <div className='order-link'>
+        <p>{item.date}</p>
+        <p>items: {item.items.length}</p>
+       </div>
+        )
       })}
     </div>
 

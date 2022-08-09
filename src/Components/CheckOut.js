@@ -43,12 +43,18 @@ export default function CheckOut() {
         axios.post('/payment',{id:id,amount:total,token}).then((res=>{
         console.log('payemt fucn firered')
         if(res.status===200){
-            const d = new Date()
+
+            const today = new Date()
+            var options = { year: 'numeric', month: 'long', day: 'numeric' };
+           
+           const date = today.toLocaleDateString("en-US", options)
+
+
             console.log('order')
             const order = {
                 items:cart,
                 user_id:id,
-                date:d,
+                date:date,
                 cost: totalDisplay,
                 "succesful_payment":true,
                 "order_shipped":false,
