@@ -12,28 +12,12 @@ function Home() {
   const[loading, setLoading] = useState<boolean>(true)
 
 
-  const [items, setItem] = useState([
-    {
-        name: "Mango",
-        price: 1.00,
-    },
-    {
-        name:"Apple",
-        price:.40
-    }
-  ]);
-
-  const increment =()=>{
-    setNumber(prevState=> prevState+1)
-    // setNumber("5") typescript error
-  }
-
   return (
     <div className="Home">  
-  
     <Header/>
           <main>
         <Market/>
+      
       <Nav/>
     </main>
    
@@ -42,5 +26,4 @@ function Home() {
     </div>
   );
 }
-
 export default Home;

@@ -23,6 +23,7 @@ module.exports = {
     let { username, password } = req.body;
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
+
   
     sequelize
       .query(`SELECT * FROM users WHERE username = '${username}';`)
@@ -37,8 +38,8 @@ module.exports = {
           )
           .then((dbRes) => res.status(200).send(dbRes[0][0]))
           .catch((err) => console.log(err));
-      
       })
+      
    
 
   },

@@ -34,7 +34,7 @@ function Item(props: PropsItem) {
       console.log(itemAdded)
       setItemAdded(true)
       setNumber(1) 
-      navigate('/')
+      navigate('/') 
       setTimeout(() => {setItemAdded(false)}, 1500);
      
     }).catch((err)=>console.log(err));
@@ -50,7 +50,6 @@ function Item(props: PropsItem) {
     <img id='checkmark' src='https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Arrows-PNG/Green_Check_Mark_PNG_Clipart.png?m=1589361041'></img>
      </>
     :  
-
     <div className='item-normal'>
         <p>{props.item.name[0].charAt(0).toUpperCase() + props.item.name.slice(1)}</p>
         <p>${props.item.price}</p>

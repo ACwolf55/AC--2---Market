@@ -12,6 +12,9 @@ export default function Orders() {
   useEffect(()=>{
 
     axios.get(`/userOrders/${id}`).then((res)=>{
+      if(res.data.length==0){
+        
+      }
       setOrders(res.data)
     })
 
