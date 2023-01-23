@@ -6,16 +6,17 @@ export default function Orders() {
   let id = sessionStorage.getItem("id");
 
   const [orders,setOrders] = useState([])
+  const [loading,setLoading] = useState(true)
 
 
   
   useEffect(()=>{
 
     axios.get(`/userOrders/${id}`).then((res)=>{
-      if(res.data.length==0){
-        
-      }
+      console.log(res.data)
       setOrders(res.data)
+      setLoading(false)
+
     })
 
   },[])
@@ -31,10 +32,13 @@ export default function Orders() {
       <h2>-- ⚠ Page Under Construction ⚠ --</h2>
     <br/>
       <>
-      {orders.length==0
+      {loading
       ?
       <p>loading</p>
       :
+      orders.length==0 ?
+        <p>No Orders</p> 
+        :
       <div className='orders-map'>
       {orders.map((item)=>{
         return (
