@@ -10,7 +10,7 @@ export default function Register() {
   
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-    const[number, setNumber] = useState<number>(1)
+    const [number, setNumber] = useState<number>(1);
    
 
 

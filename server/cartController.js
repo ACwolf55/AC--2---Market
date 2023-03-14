@@ -50,7 +50,8 @@ module.exports = {
       })
     },
     getCartItems: (req,res)=>{
-      const id = parseInt(req.params.user_id)
+      const {id} = req.params.user_id
+      console.log(req.params)
       sequelize.query(`
       SELECT * FROM items i
       JOIN cart c on c.item_id = i.id

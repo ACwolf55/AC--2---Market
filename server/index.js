@@ -9,7 +9,6 @@ const bodyParser = require('body-parser');
 
 require("dotenv").config(); 
 const {MongoClient} = require('mongodb')
-const { default: axios } = require('axios')
 const { MongoURI } = process.env;
 
 
@@ -25,7 +24,7 @@ app.listen(PORT, console.log(`RUNNING @ PORT ${PORT}`))
 
 ///endpoints / controllers
 
-app.post('/newOrder',(MongoCtrl.newOrder))
+app.post('/newOrder',MongoCtrl.newOrder)
 app.get('/mongoDBtest',MongoCtrl.listDatabases)
 app.get('/userOrders/:user_id',MongoCtrl.userOrders)
 

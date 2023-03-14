@@ -73,10 +73,10 @@ function Nav() {
       <div className='cart-click' onClick={()=>navigate('/Cart')}>
         <div className="cartNumLogo">{cartNumber==null?"loading" : cartNumber}</div>
         <img src={cartLogo} id='cart-logo'/>
-        <h4>view cart</h4>
+        <h4 className="view-cart">view cart</h4>
        </div>
         <div/>
-        <Link to='/Orders'>View Orders</Link>
+        <Link to='/Orders'  style={{color: "#a8d6db"}}>View Orders</Link>
        <button onClick={logout}>Logout</button>
        </>
        :
