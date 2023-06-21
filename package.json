@@ -5,6 +5,7 @@
   "main": "./server/index.js",
   "proxy": "http://localhost:5000/",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
     "@stripe/react-stripe-js": "^1.7.0",
     "@stripe/stripe-js": "^1.25.0",
     "@testing-library/jest-dom": "^5.16.1",

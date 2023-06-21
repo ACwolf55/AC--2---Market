@@ -5,5 +5,6 @@ with:
 -react
 -typescipt
 -express
--SASS
+-stripe
 -sequelize/postgres
+-MongoDB
