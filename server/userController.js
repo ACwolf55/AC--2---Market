@@ -25,8 +25,7 @@ module.exports = {
     const hash = bcrypt.hashSync(password, salt);
 
   
-    sequelize
-      .query(`SELECT * FROM users WHERE username = '${username}';`)
+    sequelize.query(`SELECT * FROM users WHERE username = '${username}';`)
       .then((dbRes) => {
         console.log(dbRes[0][0])
         if (dbRes[0][0]){

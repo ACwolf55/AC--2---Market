@@ -91,6 +91,19 @@ module.exports = {
       
         })
     },
+    
+    deleteItem: (req,res) => {
+      const id =  parseInt(req.params.id)
+
+      sequelize.query(`
+      DELETE FROM cart WHERE id = ${id}; `)
+        .then((dbRes)=>{
+        console.log(dbRes[0])
+        return res.status(200).send(dbRes[0])
+      
+        })
+    },
+
     payment: async(req,res) =>{
       let status , error;
       const {token,amount} = req.body

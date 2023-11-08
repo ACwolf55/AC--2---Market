@@ -2,10 +2,13 @@ import axios from "axios";
 import React, { useState,useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import cartLogo from './cart.png'
-
+import { setCartNum,cartNum} from "../redux/cartNumSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function Nav() {
   const navigate = useNavigate();
+  let dispatch = useDispatch();
+  let cartNum = useSelector((state: RootState) => state.user.loggedIn);
   let loginName = sessionStorage.getItem("username");
   let id = sessionStorage.getItem("id");
   // let loginName = sessionStorage.getItem("username");
@@ -25,7 +28,9 @@ function Nav() {
     let id = sessionStorage.getItem("id");
     if(id!==null){
     axios.get(`/cartNumber/${id}`).then((res)=>{
-        setCartNumber(res.data)
+        dispatch(setCartNum(res.data))
+        setCartNum(res.data)
+       
     })
     while(cartNumber==0){
       setNumber((prevState)=>prevState+1)
@@ -35,9 +40,6 @@ function Nav() {
     }
   }
   }, [loaded])
-
-
-  
 
   const login = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -50,10 +52,10 @@ function Nav() {
     } else {
       axios.post("/login", { username, password }).then((res) => {
         console.log(res.data)
-        sessionStorage.setItem("username",res.data.username );
-        sessionStorage.setItem("id",res.data.id );
+        sessionStorage.setItem("username",res.data.user.user_name );
+        sessionStorage.setItem("id",res.data.user.id );
         setLoaded(true);
-      }).catch((err)=> alert(err.response.request.response))
+      }).catch((err)=> alert(err))
     }
   };
 
@@ -62,12 +64,12 @@ function Nav() {
     setLoaded(false)
     navigate('/')
   }
- 
 
 
   return (
     <nav>
-      {loginName !== null ?
+      {loginName !== null 
+      ?
       <>
        <h2>{loginName}</h2> 
       <div className='cart-click' onClick={()=>navigate('/Cart')}>
@@ -102,7 +104,6 @@ function Nav() {
        <button onClick={()=>navigate('/Register')}>Register</button> 
        </>
        }
-     
       <p style={{color:'black'}}>{loaded}</p>
     </nav>
   );

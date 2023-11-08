@@ -6,6 +6,8 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { Provider } from "react-redux";
+import {store} from "./redux/store"; 
 
 const stripePromise = loadStripe(
   "pk_test_51Kh1AwBS4IfWHtbjigMFs5u1KmU158nXHbRzoEKudS0jPUTypjrObeNAlFOHbHmYoK37Ec4TAjJP59pznbQzusTV00iomdfIpp"
@@ -18,11 +20,13 @@ const options = {
 
 ReactDOM.render(
   <BrowserRouter>
+  <Provider store={store}>
     <Elements stripe={stripePromise} options={options}>
 
       <App />
 
     </Elements>
+    </Provider>
   </BrowserRouter>,
   document.getElementById("root")
 );
