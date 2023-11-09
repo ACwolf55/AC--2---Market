@@ -1,10 +1,3 @@
-E-shop
+// "proxy": "http://localhost:5000/",
 
-with:
-
--react
--typescipt
--express
--stripe
--sequelize/postgres
--MongoDB
+taken out of package.json for deployment
