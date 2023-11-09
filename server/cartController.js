@@ -44,18 +44,18 @@ module.exports = {
     },
     getCart: (req,res)=>{
       const user_id = parseInt(req.params.user_id)
+      console.log(user_id)
       sequelize.query(`SELECT * FROM cart WHERE user_id = ${user_id}`).then((dbRes)=>{
         console.log(dbRes)
         return res.status(200).send(dbRes[0])
       })
     },
     getCartItems: (req,res)=>{
-      const {id} = req.params.user_id
-      console.log(req.params)
+      const user_id = parseInt(req.params.user_id)
       sequelize.query(`
       SELECT * FROM items i
       JOIN cart c on c.item_id = i.id
-        WHERE c.user_id = ${id}; `).then((dbRes)=>{
+        WHERE c.user_id = ${user_id}; `).then((dbRes)=>{
         console.log(dbRes)
         return res.status(200).send(dbRes[0])
       })

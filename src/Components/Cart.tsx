@@ -31,6 +31,7 @@ function Cart() {
     //   setCart(res.data)
 
     axios.get(`/getCartItems/${id}`).then((res)=>{
+      console.log(res.data)
       setCart(res.data)
       
       })

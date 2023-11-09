@@ -16,7 +16,6 @@ function Nav() {
   // let id = sessionStorage.getItem("id");
 
   const [loaded, setLoaded] = useState(false);
-  const [cartNumber, setCartNumber] = useState(null);
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const[number, setNumber] = useState<number>(1)
@@ -24,18 +23,16 @@ function Nav() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    console.log(cartNumber)
+    console.log(cartNum)
     let loginName = sessionStorage.getItem("username");
     let id = sessionStorage.getItem("id");
     if(id!==null){
     axios.get(`/cartNumber/${id}`).then((res)=>{
+      console.log(res.data)
         dispatch(setCartNum(res.data))
-        setCartNum(res.data)
-       
-    })
-    while(cartNumber==0){
-      setNumber((prevState)=>prevState+1)
-    }
+    }) as Promise<void>
+
+  
     if(loginName==null){
       setLoaded(false)
     }
@@ -53,7 +50,7 @@ function Nav() {
     } else {
       axios.post("/login", { username, password }).then((res) => {
         console.log(res.data)
-        sessionStorage.setItem("username",res.data.user_name );
+        sessionStorage.setItem("username",res.data.username );
         sessionStorage.setItem("id",res.data.id );
         setLoaded(true);
       }).catch((err)=> alert(err))
@@ -74,7 +71,7 @@ function Nav() {
       <>
        <h2>{loginName}</h2> 
       <div className='cart-click' onClick={()=>navigate('/Cart')}>
-        <div className="cartNumLogo">{cartNumber==null?"loading" : cartNumber}</div>
+        <div className="cartNumLogo">{cartNum==null?"loading" : cartNum}</div>
         <img src={cartLogo} id='cart-logo'/>
         <h4 className="view-cart">view cart</h4>
        </div>
