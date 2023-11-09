@@ -27,7 +27,7 @@ module.exports = {
   
     sequelize.query(`SELECT * FROM users WHERE username = '${username}';`)
       .then((dbRes) => {
-        console.log(dbRes[0][0])
+        console.log(dbRes[0])
         if (dbRes[0][0]){
           return res.send('username already exists')
         }
@@ -45,6 +45,7 @@ module.exports = {
      sequelize.query(`SELECT * FROM users WHERE username = '${username}';`)
       .then((user) => {
         user = user[0][0];
+        console.log(user)
         if(!user){
           return res.status(401).send('User not found')
         }

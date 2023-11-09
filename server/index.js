@@ -46,15 +46,7 @@ app.post('/register', userCtrl.register)
 app.post('/login', userCtrl.login)
 
 
-app.get('/allItems', (req, res) => {
-  
-    sequelize.query(`SELECT * FROM items;`).then((dbRes) => {
-      console.log('asd')
-      res.send(dbRes[0]);
-    })
-
-  } )
-  
+app.get('/allItems',cartCtrl.allItems )
 app.post('/addToCart',cartCtrl.addToCart)
 
 app.get('/getCart/:user_id',cartCtrl.getCart)

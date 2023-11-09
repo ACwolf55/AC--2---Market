@@ -53,8 +53,8 @@ function Nav() {
     } else {
       axios.post("/login", { username, password }).then((res) => {
         console.log(res.data)
-        sessionStorage.setItem("username",res.data.user.user_name );
-        sessionStorage.setItem("id",res.data.user.id );
+        sessionStorage.setItem("username",res.data.user_name );
+        sessionStorage.setItem("id",res.data.id );
         setLoaded(true);
       }).catch((err)=> alert(err))
     }
