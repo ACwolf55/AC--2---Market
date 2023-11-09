@@ -12,7 +12,7 @@ interface PropsItem {
     }
 }
 
-function Item(props) {
+function Item(props: PropsItem) {
   const navigate = useNavigate();
 
 

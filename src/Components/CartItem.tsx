@@ -27,16 +27,16 @@ function CartItem(props: PropsItem) {
  
 
   useEffect(() => {
-
-  
     console.log(props.item)
   
   }, [])
 
   const deleteItem =()=>{
-    //axios.delete(`/deleteCartItem/${item.id}.then(res))
+    axios.delete(`/deleteItem/${props.item.id}`)
+    .then((res)=>{
+      console.log(res.data)
+    }).catch((err)=>console.log(err) )
   }
-  
 
   return (
     <div className='item-card'>

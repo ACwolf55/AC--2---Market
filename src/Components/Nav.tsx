@@ -4,11 +4,12 @@ import { useNavigate, Link } from "react-router-dom";
 import cartLogo from './cart.png'
 import { setCartNum,cartNum} from "../redux/cartNumSlice";
 import { useDispatch, useSelector } from "react-redux";
+import type { RootState } from "../redux/store";
 
 function Nav() {
   const navigate = useNavigate();
   let dispatch = useDispatch();
-  let cartNum = useSelector((state: RootState) => state.user.loggedIn);
+  let cartNum = useSelector((state: RootState) => state.cartNum.value);
   let loginName = sessionStorage.getItem("username");
   let id = sessionStorage.getItem("id");
   // let loginName = sessionStorage.getItem("username");
