@@ -18,14 +18,11 @@ const sequelize = new Sequelize(DATABASE_URL, {
 
 module.exports = {
 
-
   allItems: (req, res) => {
-  
     sequelize.query(`SELECT * FROM items;`).then((dbRes) => {
       console.log('asd')
       res.send(dbRes[0]);
     })
-
   },
 
     addToCart: (req,res)=>{
@@ -67,7 +64,6 @@ module.exports = {
       sequelize.query(`SELECT * FROM items WHERE id = ${item_id}`).then((dbRes)=>{
         return res.status(200).send(dbRes[0][0])
       })
-
     },
 
     cartNumber: (req,res)=>{

@@ -15,8 +15,9 @@ export default function Market() {
     axios.get('/allItems').then((res)=>{
       setItems(res.data)
       console.log(res.data)
-      
-    })},[])
+    }).catch((err)=>console.log(err))
+    
+    },[])
 
     const searchItems =()=>{
       console.log('sdf')

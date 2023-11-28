@@ -37,7 +37,7 @@ function Nav() {
       setLoaded(false)
     }
   }
-  }, [loaded])
+  }, [loaded,cartNum])
 
   const login = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -80,7 +80,7 @@ function Nav() {
        <button onClick={logout}>Logout</button>
        </>
        :
-       <>
+       <div className="mobile-form">
         <form onSubmit={login}>
         <label>
           Login:
@@ -100,7 +100,8 @@ function Nav() {
         <input type="submit" value="Submit" />
       </form>
        <button onClick={()=>navigate('/Register')}>Register</button> 
-       </>
+
+       </div>
        }
       <p style={{color:'black'}}>{loaded}</p>
     </nav>
