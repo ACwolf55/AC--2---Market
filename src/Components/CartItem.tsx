@@ -11,30 +11,31 @@ import React, {useEffect, useState} from 'react';
 // }
 
 interface PropsItem {
+  setRefresh: React.Dispatch<React.SetStateAction<boolean>>; 
   item:{ id:String,
     name:String,
     price: String,
     description: String,
     pic_url:string
-
   }
+
 }
 
 function CartItem(props: PropsItem) {
 
   let id = sessionStorage.getItem("id");
-  const [total,setTotal] =useState(0)
  
 
   useEffect(() => {
     console.log(props.item)
   
-  }, [])
+  }, [props])
 
   const deleteItem =()=>{
     axios.delete(`/deleteItem/${props.item.id}`)
     .then((res)=>{
       console.log(res.data)
+      props.setRefresh((prevRefresh) => !prevRefresh);
     }).catch((err)=>console.log(err) )
   }
 

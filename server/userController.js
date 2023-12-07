@@ -21,6 +21,7 @@ module.exports = {
 
   register: (req, res) => {
     let { username, password } = req.body;
+    username = username.toLowerCase()
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
 
@@ -42,6 +43,7 @@ module.exports = {
 
   login: (req, res) => {
     let { username, password } = req.body;
+    username = username.toLowerCase()
      sequelize.query(`SELECT * FROM users WHERE username = '${username}';`)
       .then((user) => {
         user = user[0][0];

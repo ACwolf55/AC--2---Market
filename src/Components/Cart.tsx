@@ -9,10 +9,9 @@ function Cart() {
   const navigate = useNavigate();
   let id = sessionStorage.getItem("id");
   let username = sessionStorage.getItem("username");
-  const[loading, setLoading] = useState(true)
   const [cart, setCart] = useState([])
-  const [total,setTotal] = useState(0)
   const [totalDisplay, setTotalDisplay] = useState('')
+  const [refresh,setRefresh] = useState(false)
 
   // const[cart,setCart] = useState(
   //   [
@@ -42,7 +41,7 @@ function Cart() {
     }))
       
 
-  },[])
+  },[refresh])
 
 
 
@@ -67,7 +66,7 @@ function Cart() {
         <>
               {cart.map(element=>{
                 return(
-                <CartItem item={element}/>
+                <CartItem item={element} setRefresh={setRefresh}/>
                 )
             })}
           </>
