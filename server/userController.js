@@ -1,6 +1,7 @@
 require("dotenv").config(); 
 const { DATABASE_URL } = process.env;
 const Sequelize = require("sequelize");
+const { QueryTypes } = require('sequelize');
 const bcrypt = require("bcryptjs");
 const stripe = require('stripe')(process.env.STRIPE_SECRET_TEST)
 
@@ -19,45 +20,71 @@ module.exports = {
     res.send("test2");
   },
 
-  register: (req, res) => {
-    let { username, password } = req.body;
-    username = username.toLowerCase()
-    const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(password, salt);
-
+  register: async (req, res) => {
+    try {
+      let { username, password } = req.body;
+      username = username.toLowerCase();
+      const salt = bcrypt.genSaltSync(10);
+      const hash = bcrypt.hashSync(password, salt);
   
-    sequelize.query(`SELECT * FROM users WHERE username = '${username}';`)
-      .then((dbRes) => {
-        console.log(dbRes[0])
-        if (dbRes[0][0]){
-          return res.send('username already exists')
+      // Check if the username already exists
+      const existingUser = await sequelize.query(
+        'SELECT * FROM users WHERE username = :username',
+        {
+          replacements: { username: username },
+          type: QueryTypes.SELECT
         }
-        sequelize
-          .query(
-            `INSERT INTO users (username, password) VALUES ('${username}', '${hash}') returning username;`
-          )
-          .then((dbRes) => res.status(200).send(dbRes[0][0]))
-          .catch((err) => console.log(err));
-      })
+      );
+  
+      if (existingUser.length > 0) {
+        return res.status(409).send('Username already exists');
+      }
+  
+      // Create a new user
+      const newUser = await sequelize.query(
+        'INSERT INTO users (username, password) VALUES (:username, :password) RETURNING username',
+        {
+          replacements: { username: username, password: hash },
+          type: QueryTypes.INSERT
+        }
+      );
+  
+      return res.status(200).send(newUser[0].username);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).send('Internal Server Error');
+    }
   },
-
-  login: (req, res) => {
-    let { username, password } = req.body;
-    username = username.toLowerCase()
-     sequelize.query(`SELECT * FROM users WHERE username = '${username}';`)
-      .then((user) => {
-        user = user[0][0];
-        console.log(user)
-        if(!user){
-          return res.status(401).send('User not found')
+  
+  login: async (req, res) => {
+    try {
+      let { username, password } = req.body;
+      username = username.toLowerCase();
+  
+      // Find the user by username
+      const user = await sequelize.query(
+        'SELECT * FROM users WHERE username = :username',
+        {
+          replacements: { username: username },
+          type: QueryTypes.SELECT
         }
-        let isAuth = bcrypt.compareSync(password, user.password);
-        if (!isAuth) {
-          return res.status(401).send("incorrect password");
-        }
-        return res.status(200).send({ username: user.username, id: user.id });
-      })
-     
+      );
+  
+      if (user.length === 0) {
+        return res.status(401).send('User not found');
+      }
+  
+      // Check password
+      const isAuth = bcrypt.compareSync(password, user[0].password);
+      if (!isAuth) {
+        return res.status(401).send('Incorrect password');
+      }
+  
+      // Return user information
+      return res.status(200).send({ username: user[0].username, id: user[0].id });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).send('Internal Server Error');
+    }
   },
-
 };
