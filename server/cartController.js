@@ -32,7 +32,7 @@ module.exports = {
   
     sequelize
       .query(
-        'INSERT INTO cart (user_id, item_id, quantity) VALUES (:user_id, :item_id, :quantity); SELECT * FROM cart WHERE user_id = :user_id',
+        'INSERT INTO cart (user_id, item_id, quantity) VALUES (:user_id, :item_id, :quantity);',
         {
           replacements: { user_id, item_id, quantity },
           type: QueryTypes.SELECT
