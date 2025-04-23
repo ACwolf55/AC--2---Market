@@ -15,7 +15,6 @@ const { MongoURI } = process.env;
 
 
 const {PORT} = process.env
-const{CONNECTION_URI} = process.env
 app.use(express.json())
 app.use(cors())
 
@@ -41,12 +40,14 @@ app.get('/userOrders/:user_id',MongoCtrl.userOrders)
 
 app.get('/test2',userCtrl.test2)
 
+app.post("/regi", (req,res)=>{
+    res.send("Hello!~!")
+})
 
 app.post('/register', userCtrl.register)
-app.post('/login', userCtrl.login)
+app.post('/login',userCtrl.login)
 
-
-app.get('/allItems',cartCtrl.allItems )
+app.get('/allItems',cartCtrl.allItems) 
 app.post('/addToCart',cartCtrl.addToCart)
 
 app.get('/getCart/:user_id',cartCtrl.getCart)

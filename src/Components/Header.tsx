@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 
+// import Toucan from './AC-market-logo.png'
 
 function Header() {
 
  
   return (
     <header>   
-      <img src='https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Cartoons-PNG/Toucan_Cartoon_PNG_Clip_Art_Image.png?m=1532517238' id='toucan' ></img>
+      <img src='./AC-market-logo.png' id='toucan' ></img>
           <h1>~  AC - 2 - Market  ~</h1>
 
 

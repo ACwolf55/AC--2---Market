@@ -55,9 +55,9 @@ module.exports = {
       return res.status(500).send('Internal Server Error');
     }
   },
-  
+
   login: async (req, res) => {
-    try {
+    try { 
       let { username, password } = req.body;
       username = username.toLowerCase();
   

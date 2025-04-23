@@ -67,7 +67,7 @@ export default function Market() {
       
       
       </>
-      :
+      : 
      <>
         {items.map((item)=>{
             return(
